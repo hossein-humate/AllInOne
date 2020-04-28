@@ -1,0 +1,78 @@
+﻿@page
+@model TaskManager.Areas.TaskManager.Pages.Project.CreateModel
+@{
+    ViewData["Title"] = "درج پروژه جدید";
+    Layout = "_LayoutPanel";
+}
+
+<form method="post" class="w-100">
+    <div class="row m-t-10">
+        <div class="col-lg-2">
+            <p class="fs-20 font-weight-bold text-success panel-heading">درج پروژه جدید</p>
+        </div>
+        <div class="col-lg-10 float-l" dir="ltr">
+            <a asp-page="AllData" class="btn btn-success shadow btn-lg sb-left m-5">بازگشت به لیست</a>
+            <input type="submit" value="ذخیره" class="btn btn-success shadow btn-lg sb-left m-5"/>
+        </div>
+    </div>
+    <hr/>
+
+    <div class="row">
+        <div dir="rtl" class="text-black col-lg-7 col-centered">
+            <div class="row">
+                <div class="col-lg-3">
+                    <label asp-for="@Model.ProjectModel.Name">نام پروژه :</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" asp-for="@Model.ProjectModel.Name" placeholder="نام پروژه"/>
+                    <span asp-validation-for="@Model.ProjectModel.Name"></span>
+                </div>
+            </div>
+
+            <div class="row m-t-5">
+                <div class="col-lg-3">
+                    <label asp-for="@Model.ProjectModel.StartDate">تاریخ شروع :</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" id="ProjectModel_StartDate"
+                           asp-for="@Model.ProjectModel.StartDate" placeholder="تاریخ شروع"/>
+                </div>
+            </div>
+            <div class="row m-t-5">
+                <div class="col-lg-3">
+                    <label asp-for="@Model.ProjectModel.TeamLeaderId">انتخاب مدیر پروژه :</label>
+                </div>
+                <div class="col-lg-9">
+                    <select class="form-control dropdown" asp-items="@Model.Persons"
+                            asp-for="@Model.ProjectModel.TeamLeaderId" name="drpTeamLeader">
+                    </select>
+                </div>
+            </div>
+
+            <div class="row m-t-5">
+                <div class="col-lg-3">
+                    <label asp-for="@Model.ProjectModel.Description">جزئیات :</label>
+                </div>
+                <div class="col-lg-9">
+                    <input class="form-control" asp-for="@Model.ProjectModel.Description" placeholder="جزئیات"/>
+                    <span asp-validation-for="@Model.ProjectModel.Description"></span>
+                </div>
+            </div>
+            <div class="row m-t-5">
+                <div class="col-lg-3">
+                    <label asp-for="@Model.ProjectModel.VersionControlId">ورژن کنترل :</label>
+                </div>
+                <div class="col-lg-9">
+                    <select asp-for="@Model.ProjectModel.VersionControlId" class="form-control dropdown">
+                        <option value="AzureDevOps" selected="selected">Azure DevOps</option>
+                        <option value="TeamFoundationService">TFS</option>
+                        <option value="BitKeeper">BitKeeper</option>
+                        <option value="GitHub">GitHub</option>
+                        <option value="GitLab">GitLab</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,72 @@
+﻿@page
+@model Identity.Areas.Identity.Pages.User.ProfileModel
+@{
+    ViewData["Title"] = "مدیریت حساب کاربری";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+    <link href="~/panel/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>پروفایل کاربر</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت حساب کاربری</a>
+            </li>
+            <li class="active">
+                <strong>پروفایل</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-area="Identity" asp-page="/User/ConfirmMobile" class="btn btn-info float-l">تایید تلفن همراه</a>
+            <a asp-area="Identity" asp-page="/User/Edit" class="btn btn-info float-l">ویرایش اطلاعات اصلی</a>
+            <a asp-area="Identity" asp-page="/User/Edit" class="btn btn-info float-l">ویرایش اطلاعات شخصی</a>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-md-4">
+            <vc:personal-information></vc:personal-information>
+        </div>
+        <div class="col-md-8">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>گزارشات</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#">Config option 1</a>
+                            </li>
+                            <li>
+                                <a href="#">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <partial name="Report/_VisitorLastWeek"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/panel/js/plugins/toastr/toastr.min.js"></script>
+}

@@ -1,0 +1,32 @@
+﻿@model Model.Entity.Identity.User
+
+<div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <h5>مشخصات @Model.Username</h5>
+    </div>
+    <div>
+        <div class="ibox-content no-padding border-left-right">
+            <img alt="تصویر کاربر" class="img-responsive w-100" 
+                 src="@(string.IsNullOrWhiteSpace(Model.Person.PersonPictureUrl) ? "/img/profile/person-image.png" : 
+                          Model.Person.PersonPictureUrl)" data-src="/img/profile/person-image.png" />
+        </div>
+        <div class="ibox-content profile-content">
+            <h4><strong>@Model.Person.Firstname @Model.Person.Lastname</strong></h4>
+            <p><i class="fa fa-mobile"></i> @Model.Phones.FirstOrDefault(p => p.Primary)?.Number</p>
+            <h5>
+                درباره من
+            </h5>
+            <p>
+                @Model.Person.Description
+            </p>
+            <div class="row">
+                <div class="col-md-6">
+                    <a asp-area="Identity" asp-page="/Person/EditPersonalInfo"
+                       class="btn btn-primary btn-sm btn-block"><i class="fa fa-user"></i> ویرایش اطلاعات شخصی</a>
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

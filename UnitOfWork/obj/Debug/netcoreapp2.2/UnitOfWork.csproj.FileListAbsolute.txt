@@ -1,0 +1,14 @@
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\bin\Debug\netcoreapp2.2\UnitOfWork.deps.json
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\bin\Debug\netcoreapp2.2\UnitOfWork.dll
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\obj\Debug\netcoreapp2.2\UnitOfWork.csproj.CoreCompileInputs.cache
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\obj\Debug\netcoreapp2.2\UnitOfWork.AssemblyInfoInputs.cache
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\obj\Debug\netcoreapp2.2\UnitOfWork.AssemblyInfo.cs
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\obj\Debug\netcoreapp2.2\UnitOfWork.csprojAssemblyReference.cache
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\bin\Debug\netcoreapp2.2\UnitOfWork.pdb
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\bin\Debug\netcoreapp2.2\DataAccess.dll
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\bin\Debug\netcoreapp2.2\Model.dll
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\bin\Debug\netcoreapp2.2\DataAccess.pdb
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\bin\Debug\netcoreapp2.2\Model.pdb
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\obj\Debug\netcoreapp2.2\UnitOfWork.csproj.CopyComplete
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\obj\Debug\netcoreapp2.2\UnitOfWork.dll
+F:\Projects\Azure Repo\AllInOne\UnitOfWork\obj\Debug\netcoreapp2.2\UnitOfWork.pdb

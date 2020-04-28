@@ -1,0 +1,172 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllInOne", "AllInOne\AllInOne.csproj", "{AC073060-2A95-445C-A9B8-239C26DBA417}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9C34EEFF-C625-486E-9446-08A6787C39B3} = {9C34EEFF-C625-486E-9446-08A6787C39B3}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackBone", "BackBone", "{2CFEDA03-236B-447B-8273-20FFD2974271}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{AC121E8F-8A83-4BA1-B4F5-EFDE209F810F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{DFE862A4-A990-4602-A311-796E302410E3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitOfWork", "UnitOfWork\UnitOfWork.csproj", "{3B13D2A7-B19A-4475-A863-045571A3AB44}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module", "Module", "{1F98C8A2-C6FD-40BF-833C-AD96E447FF23}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity", "Identity\Identity.csproj", "{221AC1EA-CB46-4003-B9E3-88906DB34D5F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{0C914E7B-F0AC-4847-9DB8-3FADC74ED72A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utility", "Utility\Utility.csproj", "{43559012-FA0F-4D91-8E8C-B9DDCB1BA09C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{9C34EEFF-C625-486E-9446-08A6787C39B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applcation", "Applcation", "{F21AE4C5-077F-4C22-A2BF-9B06335417EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager", "TaskManager\TaskManager.csproj", "{3FDCD38A-88D5-4335-840E-7F0CE431E11B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BD306A75-302F-410E-9F3C-8F2EDE0E140C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{90F08043-FE97-43C9-B260-314996C42B4E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BaseInfo", "BaseInfo\BaseInfo.csproj", "{D15212F7-EFFF-48E3-BFC8-6C2B453BE692}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Finance", "Finance\Finance.csproj", "{07769AD1-3FEE-4173-AD6D-15F3430815C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blog", "Blog\Blog.csproj", "{86847BCD-90BB-4280-99A1-D09E1B65DAEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2AC1A2F7-3933-4681-B519-C756572FD1EC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC073060-2A95-445C-A9B8-239C26DBA417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC073060-2A95-445C-A9B8-239C26DBA417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC073060-2A95-445C-A9B8-239C26DBA417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC073060-2A95-445C-A9B8-239C26DBA417}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC121E8F-8A83-4BA1-B4F5-EFDE209F810F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC121E8F-8A83-4BA1-B4F5-EFDE209F810F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC121E8F-8A83-4BA1-B4F5-EFDE209F810F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC121E8F-8A83-4BA1-B4F5-EFDE209F810F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE862A4-A990-4602-A311-796E302410E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE862A4-A990-4602-A311-796E302410E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE862A4-A990-4602-A311-796E302410E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE862A4-A990-4602-A311-796E302410E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B13D2A7-B19A-4475-A863-045571A3AB44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B13D2A7-B19A-4475-A863-045571A3AB44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B13D2A7-B19A-4475-A863-045571A3AB44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B13D2A7-B19A-4475-A863-045571A3AB44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{221AC1EA-CB46-4003-B9E3-88906DB34D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{221AC1EA-CB46-4003-B9E3-88906DB34D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{221AC1EA-CB46-4003-B9E3-88906DB34D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{221AC1EA-CB46-4003-B9E3-88906DB34D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43559012-FA0F-4D91-8E8C-B9DDCB1BA09C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43559012-FA0F-4D91-8E8C-B9DDCB1BA09C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43559012-FA0F-4D91-8E8C-B9DDCB1BA09C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43559012-FA0F-4D91-8E8C-B9DDCB1BA09C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C34EEFF-C625-486E-9446-08A6787C39B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C34EEFF-C625-486E-9446-08A6787C39B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C34EEFF-C625-486E-9446-08A6787C39B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C34EEFF-C625-486E-9446-08A6787C39B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FDCD38A-88D5-4335-840E-7F0CE431E11B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FDCD38A-88D5-4335-840E-7F0CE431E11B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FDCD38A-88D5-4335-840E-7F0CE431E11B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FDCD38A-88D5-4335-840E-7F0CE431E11B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D15212F7-EFFF-48E3-BFC8-6C2B453BE692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D15212F7-EFFF-48E3-BFC8-6C2B453BE692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D15212F7-EFFF-48E3-BFC8-6C2B453BE692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D15212F7-EFFF-48E3-BFC8-6C2B453BE692}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07769AD1-3FEE-4173-AD6D-15F3430815C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07769AD1-3FEE-4173-AD6D-15F3430815C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07769AD1-3FEE-4173-AD6D-15F3430815C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07769AD1-3FEE-4173-AD6D-15F3430815C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86847BCD-90BB-4280-99A1-D09E1B65DAEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86847BCD-90BB-4280-99A1-D09E1B65DAEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86847BCD-90BB-4280-99A1-D09E1B65DAEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86847BCD-90BB-4280-99A1-D09E1B65DAEE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AC073060-2A95-445C-A9B8-239C26DBA417} = {F21AE4C5-077F-4C22-A2BF-9B06335417EB}
+		{2CFEDA03-236B-447B-8273-20FFD2974271} = {BD306A75-302F-410E-9F3C-8F2EDE0E140C}
+		{AC121E8F-8A83-4BA1-B4F5-EFDE209F810F} = {2CFEDA03-236B-447B-8273-20FFD2974271}
+		{DFE862A4-A990-4602-A311-796E302410E3} = {0C914E7B-F0AC-4847-9DB8-3FADC74ED72A}
+		{3B13D2A7-B19A-4475-A863-045571A3AB44} = {2CFEDA03-236B-447B-8273-20FFD2974271}
+		{1F98C8A2-C6FD-40BF-833C-AD96E447FF23} = {F21AE4C5-077F-4C22-A2BF-9B06335417EB}
+		{221AC1EA-CB46-4003-B9E3-88906DB34D5F} = {1F98C8A2-C6FD-40BF-833C-AD96E447FF23}
+		{0C914E7B-F0AC-4847-9DB8-3FADC74ED72A} = {BD306A75-302F-410E-9F3C-8F2EDE0E140C}
+		{43559012-FA0F-4D91-8E8C-B9DDCB1BA09C} = {0C914E7B-F0AC-4847-9DB8-3FADC74ED72A}
+		{9C34EEFF-C625-486E-9446-08A6787C39B3} = {1F98C8A2-C6FD-40BF-833C-AD96E447FF23}
+		{F21AE4C5-077F-4C22-A2BF-9B06335417EB} = {BD306A75-302F-410E-9F3C-8F2EDE0E140C}
+		{3FDCD38A-88D5-4335-840E-7F0CE431E11B} = {1F98C8A2-C6FD-40BF-833C-AD96E447FF23}
+		{D15212F7-EFFF-48E3-BFC8-6C2B453BE692} = {1F98C8A2-C6FD-40BF-833C-AD96E447FF23}
+		{07769AD1-3FEE-4173-AD6D-15F3430815C9} = {1F98C8A2-C6FD-40BF-833C-AD96E447FF23}
+		{86847BCD-90BB-4280-99A1-D09E1B65DAEE} = {1F98C8A2-C6FD-40BF-833C-AD96E447FF23}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {52669B65-CC69-4B14-B043-4A60327D9EBB}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 12
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dev.azure.com/hhumata
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AllInOne\\AllInOne.csproj
+		SccProjectTopLevelParentUniqueName1 = AllInOne.sln
+		SccProjectName1 = AllInOne
+		SccLocalPath1 = AllInOne
+		SccProjectUniqueName2 = DataAccess\\DataAccess.csproj
+		SccProjectTopLevelParentUniqueName2 = AllInOne.sln
+		SccProjectName2 = DataAccess
+		SccLocalPath2 = DataAccess
+		SccProjectUniqueName3 = Model\\Model.csproj
+		SccProjectTopLevelParentUniqueName3 = AllInOne.sln
+		SccProjectName3 = Model
+		SccLocalPath3 = Model
+		SccProjectUniqueName4 = UnitOfWork\\UnitOfWork.csproj
+		SccProjectTopLevelParentUniqueName4 = AllInOne.sln
+		SccProjectName4 = UnitOfWork
+		SccLocalPath4 = UnitOfWork
+		SccProjectUniqueName5 = Identity\\Identity.csproj
+		SccProjectTopLevelParentUniqueName5 = AllInOne.sln
+		SccProjectName5 = Identity
+		SccLocalPath5 = Identity
+		SccProjectUniqueName6 = Utility\\Utility.csproj
+		SccProjectTopLevelParentUniqueName6 = AllInOne.sln
+		SccProjectName6 = Utility
+		SccLocalPath6 = Utility
+		SccProjectUniqueName7 = Application\\Application.csproj
+		SccProjectTopLevelParentUniqueName7 = AllInOne.sln
+		SccProjectName7 = Application
+		SccLocalPath7 = Application
+		SccProjectUniqueName8 = TaskManager\\TaskManager.csproj
+		SccProjectTopLevelParentUniqueName8 = AllInOne.sln
+		SccProjectName8 = TaskManager
+		SccLocalPath8 = TaskManager
+		SccProjectUniqueName9 = BaseInfo\\BaseInfo.csproj
+		SccProjectTopLevelParentUniqueName9 = AllInOne.sln
+		SccProjectName9 = BaseInfo
+		SccLocalPath9 = BaseInfo
+		SccProjectUniqueName10 = Finance\\Finance.csproj
+		SccProjectTopLevelParentUniqueName10 = AllInOne.sln
+		SccProjectName10 = Finance
+		SccLocalPath10 = Finance
+		SccProjectUniqueName11 = Blog\\Blog.csproj
+		SccProjectTopLevelParentUniqueName11 = AllInOne.sln
+		SccProjectName11 = Blog
+		SccLocalPath11 = Blog
+	EndGlobalSection
+EndGlobal

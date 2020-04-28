@@ -1,0 +1,170 @@
+﻿@page
+@using Microsoft.AspNetCore.Http
+@model Blog.Areas.Blog.Pages.DocumentImage.ListModel
+@{
+    ViewData["Title"] = "لیست تصاویر مستند";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+    <link href="~/panel/css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+    <link href="~/panel/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/panel/css/plugins/toastr/toastr.min.css" rel="stylesheet" />
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>لیست تصاویر مستند</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت مقالات و مستندات</a>
+            </li>
+            <li class="active">
+                <strong>لیست تصاویر مستند</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-page="Create" asp-route-documentId="@Model.Document.Id" class="btn btn-info float-l">درج تصویر جدید</a>
+            <a asp-page="/Document/List" class="btn btn-info float-l">بازگشت به لیست مستندات</a>
+            <a asp-area="Identity" asp-page="/User/Profile" class="btn btn-info float-l">بازگشت به پروفایل</a>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>لیست تصاویر مستند @Model.Document.Name موجود در هومت</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <table id="dataTable" class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>کپی لینک تصویر</th>
+                                    <th>پانویس</th>
+                                    <th>تصویر</th>
+                                    <th>متن جایگزین</th>
+                                    <th>طول * ارتفاع</th>
+                                    <th>امکانات</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.DocumentImagesModel)
+                                {
+                                    <tr>
+                                        <td>
+                                            <button class="btn btn-primary btnCopy"
+                                                    data-clipboard-text="@item.ImageUrl">
+                                                <i class="fa fa-copy"></i> کپی در حافظه
+                                            </button>
+                                        </td>
+                                        <td>@item.Caption</td>
+                                        <td>
+                                            <img src="@item.ImageUrl" width="64"
+                                                 data-src="/img/profile/person-image.png" />
+                                        </td>
+                                        <td>@item.Alt</td>
+                                        <td>@item.Height * @item.Width</td>
+                                        <td>
+                                            <a asp-page="Edit" asp-route-id="@item.Id"
+                                               class="btn btn-success btn-xs">ویرایش</a>
+                                            <button class="delete-modal btn btn-danger btn-xs" id="@item.Id">حذف</button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>کپی لینک تصویر</th>
+                                    <th>پانویس</th>
+                                    <th>تصویر</th>
+                                    <th>متن جایگزین</th>
+                                    <th>طول * ارتفاع</th>
+                                    <th>امکانات</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script src="~/panel/js/plugins/dataTables/datatables.min.js"></script>
+    <script src="~/panel/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="~/panel/js/plugins/clipboard/clipboard.min.js"></script>
+    <script src="~/panel/js/plugins/toastr/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            new Clipboard('.btnCopy');
+
+            $('.btnCopy').on('click',
+                function () {
+                    toastr['success']('آدرس تصویر در حافظه قرار گرفت.', 'پیام');
+                });
+
+             $('#dataTable').DataTable({
+                pageLength: 10,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv', title: 'اطلاعات تصاویر مستند' },
+                    { extend: 'excel', title: 'اطلاعات تصاویر مستند' },
+                    {
+                        extend: 'print',
+                        customize: function(win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                .addClass('compact')
+                                .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+            });
+
+            $('.delete-modal').click(function(e) {
+                swal({
+                        title: "آیا از حذف این رکورد اطمینان دارید؟",
+                        text: "شما با حذف این رکورد دیگر قادر به مشاهده آن نیستید",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "بله حذف میکنم!",
+                        cancelButtonText: "خیر منصرف شدم!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    },
+                    function(isConfirm) {
+                        if (isConfirm) {
+                            fetch("/api/Document/DeleteById",
+                                {
+                                    method: 'POST',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                        'Security-Token': '@(HttpContext.Session.GetString("Token"))'
+                                    },
+                                    body: JSON.stringify(e.target.id)
+                                });
+                            swal("خذف شد!", "عملیات حذف با موفقیت انجام شد.", "success");
+                            setTimeout(() => { location.reload() }, 2000);
+                        }
+                        else{
+                            swal("لغو عملیات!", "اطلاعات حذف نشد.", "error");
+                        }
+            });
+        });
+    });
+    </script>
+}

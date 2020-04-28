@@ -1,0 +1,9 @@
+F:\Projects\Azure Repo\AllInOne\Model\obj\Debug\netcoreapp2.2\Model.csprojAssemblyReference.cache
+F:\Projects\Azure Repo\AllInOne\Model\obj\Debug\netcoreapp2.2\Model.csproj.CoreCompileInputs.cache
+F:\Projects\Azure Repo\AllInOne\Model\obj\Debug\netcoreapp2.2\Model.AssemblyInfoInputs.cache
+F:\Projects\Azure Repo\AllInOne\Model\obj\Debug\netcoreapp2.2\Model.AssemblyInfo.cs
+F:\Projects\Azure Repo\AllInOne\Model\bin\Debug\netcoreapp2.2\Model.deps.json
+F:\Projects\Azure Repo\AllInOne\Model\bin\Debug\netcoreapp2.2\Model.dll
+F:\Projects\Azure Repo\AllInOne\Model\bin\Debug\netcoreapp2.2\Model.pdb
+F:\Projects\Azure Repo\AllInOne\Model\obj\Debug\netcoreapp2.2\Model.dll
+F:\Projects\Azure Repo\AllInOne\Model\obj\Debug\netcoreapp2.2\Model.pdb

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="author" content="Hossein Seyed Bagheri">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/favicon.png">
+    <title>هومت | @Html.Raw(ViewBag.Title)</title>
+
+    <meta property="og:site_name" content="Humate All In One" />
+    <meta property="article:publisher" content="https://www.Humate.ir/blog" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://Humate.ir/" />
+    <meta property="og:title" content="All Applications Need SSO and Authentication - Authorization - Accounting" />
+    <meta property="og:description" content="Impelimeting SSO(Single Sign On) in a few minutes with Humate All In One Application, You can create your costum Authentication,Authorization and Accounting with this Api and Manage your Dynamic Role/Permission without any limitation." />
+    <meta property="og:updated_time" content="@DateTime.Now.AddDays(-1)" />
+    <meta property="og:type" content="article" />
+    <meta content="/img/favicon.png" itemprop="image">
+    <meta content="origin" name="referrer">
+    <meta name="robots" content="nofollow" />
+    <meta name="description" content="Humate All In One SSO (Single Sign-On) and AAA (Authentication - Authorization - Accounting) - https://Humate.ir/" />
+    <meta name="Keywords" content="AllInOne,Humate,SSO,AAA,Single Sign-On,Authentication,Authorization,Accounting" />
+
+    <!-- Primary style -->
+    <link href="~/css/layout.min.css" rel="stylesheet" />
+    <link href="~/css/util.min.css" rel="stylesheet" />
+    @RenderSection("Styles", false)
+</head>
+<body class="rtls">
+    <div id="wrapper">
+        <div style="background-color: #676a6c !important;">
+            <vc:navigation></vc:navigation>
+        </div>
+        <div id="page-wrapper" class="gray-bg">
+            <partial name="Panel/_TopNavbar" />
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </div>
+        <partial name="Panel/_RightSidebar" />
+    </div>
+
+    <script src="~/js/layout.min.js"></script>
+    <script type="text/javascript">
+        function openMenu(liItem) {
+            var ulItem = liItem.id.substring(2, liItem.id.length);
+            $(liItem).toggleClass('active');
+            $('#ul' + ulItem).toggleClass('in');
+        }
+    </script>
+    @RenderSection("scripts", false)
+</body>
+</html>

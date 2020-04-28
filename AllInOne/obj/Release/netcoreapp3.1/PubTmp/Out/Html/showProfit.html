@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Test For Vue JS</title>
+</head>
+<style>
+</style>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,i) in ingredients" :key="item">
+                {{ i }}- {{ item }}
+            </li>
+        </ul>
+        <button @click="ingredients.push('Coco')">Add New</button>
+        <template v-for="(person,i) in persons">
+            <h1>
+                <p>With Index: {{ i }}</p>
+                <template v-for="(item,key) in person">
+                    <span v-if="key==='gender' && item">{{ key }}: Male</span>
+                    <span v-else-if="key==='gender' && !item">{{ key }}: Female</span>
+                    <span v-else>{{key}}: {{ item }}</span>
+                    <br>
+                </template>
+            </h1>
+            <hr>
+        </template>
+    </div>
+
+    <script src="/js/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                ingredients: ['meat', 'fruit', 'milk'],
+                persons: [
+                    { name: 'Hossein', family: 'S Bagheri', gender: true },
+                    { name: 'Mitra', family: 'Masaeli', gender: false }
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

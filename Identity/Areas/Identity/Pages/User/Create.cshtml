@@ -1,0 +1,94 @@
+﻿@page
+@model Identity.Areas.Identity.Pages.User.CreateModel
+@{
+    ViewData["Title"] = "ایجاد کاربر جدید";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>ایجاد کاربر جدید</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت گروه دسترسی کاربر</a>
+            </li>
+            <li class="active">
+                <strong>ایجاد کاربر جدید</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-area="Identity" asp-page="/User/List" asp-route-softwareId="@Model.UserModel.SoftwareId"
+               class="btn btn-info float-l">بازگشت به لیست</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>ایجاد کاربر جدید در هومت</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" asp-antiforgery="true">
+                        <input type="hidden" asp-for="UserModel.Id" />
+                        <input type="hidden" asp-for="UserModel.SoftwareId" />
+                        <div class="form-group">
+                            <label asp-for="UserModel.Username">نام کاربری :</label>
+                            <input class="form-control" asp-for="UserModel.Username" placeholder="نام کاربری" />
+                            <span class="text-danger" asp-validation-for="UserModel.Username"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UserModel.Email">پست الکترونیکی :</label>
+                            <input class="form-control" asp-for="UserModel.Email" placeholder="پست الکترونیکی" />
+                            <span class="text-danger" asp-validation-for="UserModel.Email"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UserModel.Mobile">تلفن همراه :</label>
+                            <input class="form-control" asp-for="UserModel.Mobile" placeholder="تلفن همراه" />
+                            <span class="text-danger" asp-validation-for="UserModel.Mobile"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UserModel.Password">گذرواژه :</label>
+                            <input class="form-control" asp-for="UserModel.Password" placeholder="گذرواژه" />
+                            <span class="text-danger" asp-validation-for="UserModel.Password"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UserModel.RePassword">تکرار گذرواژه :</label>
+                            <input class="form-control" asp-for="UserModel.RePassword" placeholder="تکرار گذرواژه" />
+                            <span class="text-danger" asp-validation-for="UserModel.RePassword"></span>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" type="submit">ذخیره</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script type="text/javascript">
+
+    </script>
+}

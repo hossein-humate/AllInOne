@@ -1,0 +1,163 @@
+﻿@page
+@model Blog.Areas.Blog.Pages.ArticleGroup.CreateModel
+@{
+    ViewData["Title"] = "ایجاد گروه جدید";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+    <link href="~/panel/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/summernote.min.css" rel="stylesheet" />
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>ایجاد گروه</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت مقالات و مستندات</a>
+            </li>
+            <li class="active">
+                <strong>ایجاد گروه</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-page="List" class="btn btn-info float-l">بازگشت به لیست</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>ایجاد گروه جدید در هومت</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" enctype="multipart/form-data" asp-antiforgery="true">
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="ArticleGroupModel.Name">نام :</label>
+                                    <input class="form-control" asp-for="ArticleGroupModel.Name" placeholder="نام" />
+                                    <span class="text-danger" asp-validation-for="ArticleGroupModel.Name"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="ArticleGroupModel.Title">عنوان :</label>
+                                    <input class="form-control" asp-for="ArticleGroupModel.Title" placeholder="عنوان" />
+                                    <span class="text-danger" asp-validation-for="ArticleGroupModel.Title"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="ArticleGroupModel.ParentId">انتخاب گروه والد :</label>
+                                    <select asp-for="ArticleGroupModel.ParentId" class="dropdown form-control"
+                                            asp-items="@(new SelectList(Model.Parents,
+                                                           "Value", "Text",
+                                                           Model.ArticleGroupModel.ParentId.ToString()))">
+                                        <option value="@Guid.Empty">انتخاب کنید</option>
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="ArticleGroupModel.ParentId"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-9 col-lg-9">
+                                <div class="form-group">
+                                    <label asp-for="ArticleGroupModel.MetaDescription">توضیحات متا :</label>
+                                    <textarea rows="4" class="form-control" asp-for="ArticleGroupModel.MetaDescription"
+                                              placeholder="توضیحات متا"></textarea>
+                                    <span class="text-danger" asp-validation-for="ArticleGroupModel.MetaDescription"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-3 col-lg-3">
+                                <div class="form-group">
+                                    <label asp-for="ArticleGroupModel.IsActive">فعال</label>
+                                    <input type="checkbox" class="checkbox inline" asp-for="ArticleGroupModel.IsActive" />
+                                    <span class="text-danger" asp-validation-for="ArticleGroupModel.IsActive"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="ArticleGroupModel.MetaRobots">Meta Robots :</label>
+                                    <input class="form-control" asp-for="ArticleGroupModel.MetaRobots" placeholder="Meta Robots" />
+                                    <span class="text-danger" asp-validation-for="ArticleGroupModel.MetaRobots"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="ArticleGroupModel.MetaKeywords">Meta Keywords :</label>
+                                    <input class="form-control" asp-for="ArticleGroupModel.MetaKeywords" placeholder="Meta Keywords" />
+                                    <span class="text-danger" asp-validation-for="ArticleGroupModel.MetaKeywords"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput">
+                                <i class="glyphicon glyphicon-file fileinput-exists"></i>
+                                <span class="fileinput-filename"></span>
+                            </div>
+                            <span class="input-group-addon btn btn-default btn-file">
+                                <span class="fileinput-new">انتخاب تصویر</span>
+                                <span class="fileinput-exists">تغییر</span>
+                                <input type="file" asp-for="FormFile">
+                            </span>
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">حذف</a>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="ArticleGroupModel.Description">توضیحات :</label>
+                                    <textarea class="form-control summernote" asp-for="ArticleGroupModel.Description"
+                                              placeholder="توضیحات"></textarea>
+                                    <span class="text-danger" asp-validation-for="ArticleGroupModel.Description"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <button class="btn btn-primary" id="btnSubmit" data-style="zoom-in"
+                                        type="submit">
+                                    ذخیره
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script src="~/panel/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+    <script src="~/js/summernote.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.summernote').summernote({
+                height: '300px'
+            });
+        });
+    </script>
+}

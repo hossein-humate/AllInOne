@@ -1,0 +1,111 @@
+﻿@page
+@model Application.Areas.Application.Pages.Software.EditModel
+@{
+    ViewData["Title"] = "ویرایش نرم افزار";
+    Layout = "_LayoutPanel";
+}
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>ویرایش نرم افزار</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت برنامه ها</a>
+            </li>
+            <li class="active">
+                <strong>ویرایش نرم افزار</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-page="List" class="btn btn-info float-l">بازگشت به لیست</a>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>ویراش نرم افزار در هومت</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" asp-antiforgery="true">
+                        <input type="hidden" asp-for="@Model.SoftwareModel.Id" />
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="row">
+                            <div dir="rtl" class="text-black col-lg-11 col-centered">
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <label asp-for="@Model.SoftwareModel.FaName">نام فارسی :</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input class="form-control" asp-for="@Model.SoftwareModel.FaName" placeholder="نام فارسی" />
+                                        <span asp-validation-for="@Model.SoftwareModel.FaName"></span>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <label asp-for="@Model.SoftwareModel.EnName">نام انگلیسی :</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input class="form-control" asp-for="@Model.SoftwareModel.EnName" placeholder="نام انگلیسی" />
+                                        <span asp-validation-for="@Model.SoftwareModel.EnName"></span>
+                                    </div>
+                                </div>
+                                <div class="row m-t-4">
+                                    <div class="col-lg-2">
+                                        <label asp-for="@Model.SoftwareModel.ProgrammingLanguage">زبان برنامه نویسی :</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input class="form-control" asp-for="@Model.SoftwareModel.ProgrammingLanguage" placeholder="زبان برنامه نویسی" />
+                                        <span asp-validation-for="@Model.SoftwareModel.ProgrammingLanguage"></span>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <label asp-for="@Model.SoftwareModel.Methodology">الگوی توسعه پذیری :</label>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <input class="form-control" asp-for="@Model.SoftwareModel.Methodology" placeholder="الگوی توسعه پذیری" />
+                                        <span asp-validation-for="@Model.SoftwareModel.Methodology"></span>
+                                    </div>
+                                </div>
+                                <div class="row m-t-4">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label asp-for="@Model.SoftwareModel.Description">توضیحات :</label>
+                                            <textarea rows="4" class="form-control" asp-for="@Model.SoftwareModel.Description"
+                                                      placeholder="توضیحات"></textarea>
+                                            <span class="text-danger" asp-validation-for="@Model.SoftwareModel.Description"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" data-style="zoom-in" type="submit">ذخیره</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script src="~/panel/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+}

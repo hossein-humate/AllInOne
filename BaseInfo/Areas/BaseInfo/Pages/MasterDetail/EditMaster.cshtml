@@ -1,0 +1,100 @@
+﻿@page
+@model BaseInfo.Areas.BaseInfo.Pages.MasterDetail.EditMasterModel
+@{
+    ViewData["Title"] = "ویرایش پدر-اطلاعات پایه";
+    Layout = "_LayoutPanel";
+}
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>اطلاعات پایه</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">ویرایش پدر</a>
+            </li>
+            <li class="active">
+                <strong>ویرایش پدر</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-area="BaseInfo" asp-page="/MasterDetail/ListMaster" class="btn btn-white float-l">بازگشت به لیست</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>ویرایش پدر در املاک برگ</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" asp-antiforgery="true">
+                        <input type="hidden" asp-for="MasterDetailModel.Id" />
+                        <input type="hidden" asp-for="MasterDetailModel.MasterId" />
+                        <input type="hidden" asp-for="MasterDetailModel.CreationDate" />
+                        <input type="hidden" asp-for="MasterDetailModel.LastModifiedDate" />
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="MasterDetailModel.FaName">نام فارسی :</label>
+                                    <input class="form-control" asp-for="MasterDetailModel.FaName" placeholder="نام فارسی" />
+                                    <span class="text-danger" asp-validation-for="MasterDetailModel.FaName"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="MasterDetailModel.EnName">نام انگلیسی :</label>
+                                    <input class="form-control" asp-for="MasterDetailModel.EnName" placeholder="نام انگلیسی" />
+                                    <span class="text-danger" asp-validation-for="MasterDetailModel.EnName"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="MasterDetailModel.Title">عنوان پارامتر :</label>
+                                    <input class="form-control" asp-for="MasterDetailModel.Title" placeholder="عنوان پارامتر" />
+                                    <span class="text-danger" asp-validation-for="MasterDetailModel.Title"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="MasterDetailModel.Description">توضیحات :</label>
+                                    <input class="form-control" asp-for="MasterDetailModel.Description" placeholder="توضیحات" />
+                                    <span class="text-danger" asp-validation-for="MasterDetailModel.Description"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <button class="btn btn-primary" data-style="zoom-in" type="submit">ذخیره</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+}

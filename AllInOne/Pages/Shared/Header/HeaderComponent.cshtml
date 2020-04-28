@@ -1,0 +1,45 @@
+﻿@using Microsoft.AspNetCore.Http
+<header>
+    <div class="navbar-wrapper">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">منو</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="navbar-brand">
+                        هومت
+                        <a href="/"><img src="~/img/favicon.png" width="32" alt="لوگو"></a>
+                        Humate
+                    </div>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a asp-page="/Index">خانه</a></li>
+                        @if (string.IsNullOrEmpty(Context.Session.GetString("Token")))
+                        {
+                            <li><a class="active" asp-page="/Home/Login">ورود / عضویت</a></li>
+                        }
+                        else
+                        {
+                            <li><a class="active" asp-area="Identity" asp-page="/User/Profile">پنل کاربری</a></li>
+                        }
+                        <li><a asp-page="/vBlog/ArticleGroup">بلاگ</a></li>
+                        <li><a asp-page="/Docs/Explore">مستندات</a></li>
+                        <li><a asp-page="/Terms">قوانین و مقررات</a></li>
+                        <li><a asp-page="/FAQ">سوالات متداول</a></li>
+                        <li><a asp-page="/About">درباره هومت</a></li>
+                        <li><a asp-page="/ContactUs">تماس با ما</a></li>
+                        @if (!string.IsNullOrEmpty(Context.Session.GetString("Token")))
+                        {
+                            <li><a asp-page="/Home/Login">خروج</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

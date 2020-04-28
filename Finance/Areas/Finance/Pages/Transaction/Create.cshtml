@@ -1,0 +1,174 @@
+﻿@page
+@model Finance.Areas.Finance.Pages.Transaction.CreateModel
+@{
+    ViewData["Title"] = "ایجاد تراکنش جدید";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+    <link href="~/panel/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/persianDatepicker/css/persianDatepicker-default.css" rel="stylesheet" />
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>ایجاد تراکنش</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت مالی</a>
+            </li>
+            <li class="active">
+                <strong>ایجاد تراکنش</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-page="List" class="btn btn-info float-l">بازگشت به لیست</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>ایجاد تراکنش جدید در هومت</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" asp-antiforgery="true">
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label asp-for="TransactionModel.AccountId">انتخاب حساب :</label>
+                                    <select asp-for="TransactionModel.AccountId" class="dropdown form-control"
+                                            asp-items="@(new SelectList(Model.Accounts,
+                                                           "Value", "Text",
+                                                           Model.TransactionModel.AccountId.ToString()))">
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="TransactionModel.AccountId"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="TransactionModel.Price">مبلغ(تومان) :</label>
+                                    <input type="text" class="form-control" asp-for="TransactionModel.Price" placeholder="مبلغ" />
+                                    <span class="text-danger" asp-validation-for="TransactionModel.Price"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="TransactionModel.Type">نوع تراکنش :</label>
+                                    <select asp-for="TransactionModel.Type" class="form-control dropdown">
+                                        <option value="0">درآمد</option>
+                                        <option value="1">خرج</option>
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="TransactionModel.Type"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="TransactionModel.DealTypeId">نوع معامله :</label>
+                                    <select asp-for="TransactionModel.DealTypeId" class="dropdown form-control"
+                                            asp-items="@(new SelectList(Model.DealTypes,
+                                                           "Id", "FaName",
+                                                           Model.TransactionModel.DealTypeId.ToString()))">
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="TransactionModel.DealTypeId"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="TransactionModel.ReferenceCode">شماره ارجاع :</label>
+                                    <input class="form-control" asp-for="TransactionModel.ReferenceCode" placeholder="شماره ارجاع" />
+                                    <span class="text-danger" asp-validation-for="TransactionModel.ReferenceCode"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="TransactionModel.Date">تاریخ :</label>
+                                    <input type="text" class="persianDatePicker form-control"
+                                           asp-for="Date" placeholder="تاریخ" />
+                                    <span class="text-danger" asp-validation-for="TransactionModel.Date"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="TransactionModel.Description">توضیحات :</label>
+                                    <textarea rows="4" class="form-control" asp-for="TransactionModel.Description"
+                                              placeholder="توضیحات"></textarea>
+                                    <span class="text-danger" asp-validation-for="TransactionModel.Description"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <button class="btn btn-primary" id="btnSubmit" data-style="zoom-in"
+                                            type="submit">
+                                        ذخیره
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script src="~/panel/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+    <script src="~/persianDatepicker/js/persianDatepicker.min.js"></script>
+    <script src="~/js/thousand-seprator.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            thousandSeprator("#TransactionModel_Price");
+
+            $(".persianDatePicker").persianDatepicker({
+                cellWidth: 35, cellHeight: 35, fontSize: 18,
+                formatDate: "YYYY/0M/0D"
+            });
+        });
+
+        $(".persianDatePicker").keypress(function () {
+            return false;
+        });
+
+        $("#TransactionModel_Price").keyup(function () {
+            thousandSeprator("#TransactionModel_Price");
+        });
+
+        $("#TransactionModel_Price").change(function () {
+            thousandSeprator("#TransactionModel_Price");
+        });
+
+        $('#btnSubmit').on('click',
+            function () {
+                var number = $("#TransactionModel_Price").val().replace(/,/g, '');
+                $("#TransactionModel_Price").val(number);
+            });
+    </script>
+}

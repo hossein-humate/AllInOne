@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Http
+@section Styles
+{
+    <link href="~/css/chart.min.css" rel="stylesheet" />
+}
+
+<div class="chart-container">
+    <canvas id="chrVisitor"></canvas>
+</div>
+
+<script src="~/js/chart.min.js"></script>
+
+<script>
+    function createConfig(details, labels,counts) {
+        return {
+            type: 'line',
+            data: {
+                labels:labels,
+                datasets: [{
+                    label: 'تعداد کل درخواست ها: ',
+                    steppedLine: details.steppedLine,
+                    data: counts,
+                    borderColor: details.color,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: details.label
+                },
+                legend: {
+                    labels: {
+                        fontColor: 'black',
+                        fontFamily: 'sans',
+                        fontSize:14
+                    }
+                }
+            }
+        };
+    }
+
+    window.onload = function () {
+         fetch("/api/Visitor/GetDailyLastWeek",
+            {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Security-Token': '@(Context.Session.GetString("Token"))'
+                }
+             }).then((response) => response.json())
+             .then((data) => {
+             var labels = data.map(function(x) {
+                 return x[Object.keys(x)[2]];
+             });
+             var counts = data.map(function(x) {
+                 return x[Object.keys(x)[0]];
+             });
+             var steppedLineItem = {
+                 steppedLine: false,
+                 label: 'بازدید های اخیر',
+                 color: 'rgb(255, 99, 132)'
+             };
+             var canvas = document.getElementById('chrVisitor');
+             var ctx = canvas.getContext('2d');
+             var config = createConfig(steppedLineItem, labels,counts);
+             new Chart(ctx, config);
+         }).catch(() => {
+             toastr['warning']('دریافت اطلاعات با مشکل مواجه شد.', 'خطا');
+         });
+    };
+</script>

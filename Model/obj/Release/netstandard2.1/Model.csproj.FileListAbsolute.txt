@@ -1,0 +1,11 @@
+F:\Projects\Azure Repo\AllInOne\Model\bin\Release\netstandard2.1\Model.deps.json
+F:\Projects\Azure Repo\AllInOne\Model\bin\Release\netstandard2.1\Model.dll
+F:\Projects\Azure Repo\AllInOne\Model\bin\Release\netstandard2.1\Model.pdb
+F:\Projects\Azure Repo\AllInOne\Model\bin\Release\netstandard2.1\Utility.dll
+F:\Projects\Azure Repo\AllInOne\Model\bin\Release\netstandard2.1\Utility.pdb
+F:\Projects\Azure Repo\AllInOne\Model\obj\Release\netstandard2.1\Model.csprojAssemblyReference.cache
+F:\Projects\Azure Repo\AllInOne\Model\obj\Release\netstandard2.1\Model.AssemblyInfoInputs.cache
+F:\Projects\Azure Repo\AllInOne\Model\obj\Release\netstandard2.1\Model.AssemblyInfo.cs
+F:\Projects\Azure Repo\AllInOne\Model\obj\Release\netstandard2.1\Model.csproj.CopyComplete
+F:\Projects\Azure Repo\AllInOne\Model\obj\Release\netstandard2.1\Model.dll
+F:\Projects\Azure Repo\AllInOne\Model\obj\Release\netstandard2.1\Model.pdb

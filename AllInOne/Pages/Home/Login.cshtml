@@ -1,0 +1,63 @@
+﻿@page
+@model AllInOne.Pages.Home.LoginModel
+@{
+    ViewData["Title"] = "ورود به سامانه";
+    Layout = "_Layout";
+}
+@(await Html.PartialAsync("StructuredData/_OrganizationJsonLD"))
+
+<div class="gray-bg">
+    <div class="loginColumns animated fadeInDown">
+        <div class="row">
+            <div class="col-md-6 justify-text">
+                <h2 class="font-bold">هومت - Humate</h2>
+                <p class="font-bold">
+                    خوش آمدید:
+                </p>
+                <p>
+                    در صورتی که تاکنون در سامانه هومت حساب کاربری ایجاد ننموده اید، بر روی <strong>عضویت در هومت</strong> کلیک نمایید و اطلاعات درخواست شده را وارد کنید.
+                </p>
+                <p>
+                    با استفاده از نام کاربری و گذر واژه خود وارد پنل کاربری شوید و از امکانات سامانه هومت استفاده کنید.
+                </p>
+                <p>
+                    <small> هومت در هر زمان و هر کجا قابل دسترس خواهد بود.</small>
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="ibox-content">
+                    <form method="post" asp-antiforgery="true">
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="form-group">
+                            <label asp-for="@Model.UserModel.Username">نام کاربری :</label>
+                            <input class="form-control" asp-for="@Model.UserModel.Username" placeholder="نام کاربری یا شماره تلفن همراه" />
+                            <span class="text-danger" asp-validation-for="@Model.UserModel.Username"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.UserModel.Password">گذرواژه :</label>
+                            <input class="form-control" asp-for="@Model.UserModel.Password" placeholder="گذرواژه" />
+                            <span class="text-danger" asp-validation-for="@Model.UserModel.Password"></span>
+                        </div>
+                        <button class="btn btn-primary block full-width m-b" type="submit">ورود</button>
+                        <a href="#">
+                            <small>گذرواژه را فراموش کرده ام!</small>
+                        </a>
+                        <hr />
+                        <p class="text-muted text-center">
+                            <small>حساب کاربری ندارید؟</small>
+                        </p>
+                        <a asp-page="/Home/Register" class="btn btn-sm btn-white btn-block">عضویت در هومت</a>
+                    </form>
+                    <p class="m-t">
+                        <small>امکان ورود به پنل کاربری پس از عضویت/ورود فراهم می شود</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+}

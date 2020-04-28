@@ -1,0 +1,40 @@
+﻿@model Model.Entity.Blog.Article
+
+    <script type="application/ld+json">
+        {
+        "@@context": "https://schema.org",
+        "@@type": "NewsArticle",
+        "mainEntityOfPage": {
+            "@@type": "WebPage",
+            "@@id": "https://humate.ir/vblog/content?articleId=@(Model.Id.ToString())"
+            },
+        "headline": "@Model.Name",
+        "image": [
+            @for (int i = 0; i < Model.ArticleImages.Count; i++)
+            {
+                <text>
+                    "@Model.ArticleImages[i].ArticleImageUrl"
+                    @if (i != (Model.ArticleImages.Count - 1))
+                    {
+                        <text>,</text>
+                    }
+                </text>
+            }
+        ],
+        "datePublished": "@Model.CreationDate",
+        "dateModified": "@Model.LastModifiedDate",
+        "author": {
+            "@@type": "Person",
+            "name": "Hossein Seyed Bagheri"
+        },
+        "publisher": {
+            "@@type": "Organization",
+            "name": "Humate - هومت",
+            "logo": {
+                "@@type": "ImageObject",
+                "url": "https://humate.ir/img/favicon.png"
+                }
+            },
+        "description": "@Model.Summary"
+        }
+    </script>

@@ -1,0 +1,611 @@
+﻿@page
+@{
+    ViewData["Title"] = "مدیریت همه در یکجا";
+}
+@(await Html.PartialAsync("StructuredData/_OrganizationJsonLD"))
+
+<div>
+    <div id="inSlider" class="carousel carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#inSlider" data-slide-to="0" class="active"></li>
+            <li data-target="#inSlider" data-slide-to="1"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <div class="container">
+                    <div class="carousel-caption col-lg-5 col-md-8" style="text-align: right">
+                        <h1>
+                            هومت
+                        </h1>
+                        <p>
+                            مدیریت جامع و کاربردی سیستم ها، کاربران، دسترسی ها، گروه ها، پایگاه داده و... همه در یکجا
+                            <br />
+                            احراز هویت چندگانه و چند مرحله ای با امکان تعریف اطلاعات سطوح دسترسی بدون محدودیت
+                            پیاده سازی آسان و سریع در کمتر از چند دقیقه
+                            امکانات دلخواه خود را پیاده سازی کنید.
+                            <br />
+                            هومت یک سامانه احراز هویت و مدیریت سط.ح دسترسی متمرکز می‌باشد که بر مبنای پروتکل CAS پیاده‌سازی شده است.
+                            پیاده‌سازی احراز هویت چند مرحله‌ای، تعریف نرم افزار ها و سیستم های تحت وب و تحت ویندوز، مدیریت تمامی سیستم ها در داشبورد مدیریتی، تعریف گروه ها نقش ها و دسترسی های اختصاصی کاملا در اختیار شماست،عدم محدودیت در تعریف تعداد نرم افزار گروه ها دسترسی ها و غیره،
+                            استفاده از توکن سخت‌افزاری و دستگاه های بایومتریک و RFID اشاره کرد.
+                        </p>
+                        <p>
+                            <a class="btn btn-lg btn-primary" asp-page="/Docs/Introduction">شروع کار</a>
+                        </p>
+                    </div>
+                    <div class="carousel-image wow zoomIn">
+                        <img alt="image" src="~/img/home/sso-banner.jpg" width="632" height="378">
+                    </div>
+                </div>
+                <!-- Set background for slide in css -->
+                <div class="header-back one"></div>
+            </div>
+            <div class="item">
+                <div class="container">
+                    <div class="carousel-caption blank col-lg-5 col-md-8 text-left" dir="ltr">
+                        <h1>
+                            Humate
+                        </h1>
+                        <p>
+                            Implementing SSO(Single Sign On) in a few minutes with Humate All In One Application,
+                            You can create your custom Authentication, Authorization and Accounting with this Identity Broker
+                            and Manage your Dynamic Role/Permission without any limitation.
+                        </p>
+                        <p>
+                            <a class="btn btn-lg btn-primary" asp-page="/Docs/Introduction">Get Start</a>
+                        </p>
+                    </div>
+                    <div class="carousel-image wow zoomIn">
+                        <img alt="image" src="~/img/home/sso-banner.jpg" width="632" height="378">
+                    </div>
+                </div>
+                <!-- Set background for slide in css -->
+                <div class="header-back two"></div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#inSlider" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">قبلی</span>
+        </a>
+        <a class="right carousel-control" href="#inSlider" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">بعدی</span>
+        </a>
+    </div>
+
+    <section id="features" class="container services">
+        <hr />
+        <div class="row">
+            <div class="col-sm-3">
+                <h2>مدیریت نرم افزارها</h2>
+                <p>
+                    تعریف نرم افزار به تعداد دلخواه در ایتدای استفاده
+                    از سامانه ی هومت قرار دارد، تمامی اطلاعات مربوط به گروه ها، دسترسی ها
+                    و کاربران سیستم شما به ازای هر نرم افزار جداگانه قابل پیاده سازی می باشد...
+                </p>
+                <p><a class="navy-link" href="#" role="button">جزئیات &raquo;</a></p>
+            </div>
+            <div class="col-sm-3">
+                <h2>مدیریت گروه دسترسی کاربر</h2>
+                <p>
+                    مدیریت گروه دسترسی و کاربر در هر سیستم امری مهم و اساسی است.
+                    با توجه به اینکه پیاده سازی ماژول سطوح دسترسی و حفظ امنیت نرم افزار از اهمیت بالایی برخوردار است
+                    امکاناتی فراهم شده تا شما به راحتی مدیریت آن را در دست بگیرید.
+                </p>
+                <p><a class="navy-link" href="#" role="button">جزئیات &raquo;</a></p>
+            </div>
+            <div class="col-sm-3">
+                <h2>مدیریت مالی</h2>
+                <p>
+                    برخی از قابلیت های سامانه هومت فراهم نمودن سیستم های کاربردی و کوچک جهت استفاده کاربران است.
+                    همچنین چشم انداز هومت رسیدن به یک ابر سامانه
+                    با قابلیت هوش مصنوعی و تحلیل داده های دیجیتال می باشد که با یاری شما این امر محقق خواهد شد.
+                </p>
+                <p><a class="navy-link" href="#" role="button">جزئیات &raquo;</a></p>
+            </div>
+            <div class="col-sm-3">
+                <h2>داشبورد و پروفایل</h2>
+                <p>
+                    داشبورد مدیریت و پروفایل شخصی این امکان را فراهم می کند
+                    تا ریز اطلاعات و گزاراشات نرم افزار های خود را در یک مگاه مشاهده نمایید.
+                </p>
+                <p><a class="navy-link" href="#" role="button">جزئیات &raquo;</a></p>
+            </div>
+        </div>
+        <hr />
+    </section>
+
+    <section class="container features">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>توکن احراز هویت<br /> <br /> JWT (Json Web Token) Authentcation </h1>
+                <p class="text-center">
+                    بهترین و کارآمدترین روش احراز هویت در سامانه های
+                    تحت وب استفاده از توکن یا کلید موقت برای کاربران سیستم می باشد.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-center wow fadeInLeft">
+                <div>
+                    <i class="fa fa-mobile features-icon"></i>
+                    <h2>RESTful Api</h2>
+                    <p>
+                        ارسال و دریافت درخواست ها از طریق پروتکل HTTPS و استاندارد امنیتی TLS1.2 و TLS1.3
+                    </p>
+                </div>
+                <div class="m-t-lg">
+                    <i class="fa fa-bar-chart features-icon"></i>
+                    <h2>JSON</h2>
+                    <p>
+                        نوع داده ها در ارسال و دریافت درخواست ها با استاندارد JSON پیاده سازی شده است.
+                        استفاده از این روش حجم کمتر اطلاعات و سرعت پردازش بر روی داده ها و دیگر مزیت ها را فراهم نموده است.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 text-center  wow zoomIn">
+                <img src="~/img/home/single-sign-on.jpg" alt="dashboard" class="img-responsive">
+            </div>
+            <div class="col-md-3 text-center wow fadeInRight">
+                <div>
+                    <i class="fa fa-envelope features-icon"></i>
+                    <h2>TFA/MFA</h2>
+                    <p>
+                        احراز هویت دو مرحله ای و چند گانه (Two Factor Authentication and Multiple Factor Authentication)
+                        اطمینان از صحت کاربر اصلی و  خطارات ناشی از نگهداری و حفظ گذر واژه را بیشتر می نماید.
+                    </p>
+                </div>
+                <div class="m-t-lg">
+                    <i class="fa fa-google features-icon"></i>
+                    <h2>Dynamic Components Permission</h2>
+                    <p>
+                        پویا بودن سطوح دسترسی و تعیین مجوز جهت استفاده از هر یک از اجزای سیستم فراهم شده است.
+                        شما توسط درخت دسترسی قادر خواهید بود تمامی اجزای نرم افزار از قبیل
+                        منو، کلید، لینک و... به صورت پدر فرزندی تعریف نمایید و به هرکدام مجوزی تخصیص دهید.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>All In One</h1>
+                <p class="text-center">
+                    هومت - مدیریت هم در یکجا
+                </p>
+            </div>
+        </div>
+        <div class="row features-block">
+            <div class="col-lg-6 features-text wow fadeInLeft">
+                <small>Humate - هومت</small>
+                <h2>طراحی منحصر بفرد</h2>
+                <p>
+                    ایده ی تولید سامانه هومت توسط کارشناسان و مهندسین برتر کشور پس از تجربه ی توسعه بیش از
+                    700 نرم افزار با زبان های برنامه نویسی مختلف شکل گرفت.
+                    در طول مدت طولانی این سیستم کامل و کامل تر شد و توسط سازمان ها و نهاد های مختلف انعطاف پذیری آن بالا رفت.
+                    اکنون مدیریت نرم افزار ها و افراد استفاده کننده از آن در هومت قابل اجراست.
+                    هومت (اندیشه ی نیک) همواره در دسترس خواهد بود و به صورت توزیع شده بدون هیچ وقفه ای به کاربران خود سرویس می دهد.
+                </p>
+                <a asp-page="/Docs/Introduction" class="btn btn-primary">جزئیات</a>
+            </div>
+            <div class="col-lg-6 text-right wow fadeInRight">
+                <img src="~/img/home/sso-overview_0.jpg" alt="dashboard" class="img-responsive pull-right">
+            </div>
+        </div>
+        <br />
+    </section>
+    @* تا اینجا *@
+    @*<section id="team" class="gray-section team">
+        <div class="container">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>Our Team</h1>
+                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 wow fadeInLeft">
+                    <div class="team-member">
+                        <img src="~/img/home/bg-fantesy.jpg" class="img-responsive img-circle img-small" alt="">
+                        <h4><span class="navy">Amelia</span> Smith</h4>
+                        <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus. </p>
+                        <ul class="list-inline social-icon">
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="team-member wow zoomIn">
+                        <img src="~/img/home/bg-humate.png" class="img-responsive img-circle" alt="">
+                        <h4><span class="navy">John</span> Novak</h4>
+                        <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.</p>
+                        <ul class="list-inline social-icon">
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-4 wow fadeInRight">
+                    <div class="team-member">
+                        <img src="~/img/home/bg-colorful.jpg" class="img-responsive img-circle img-small" alt="">
+                        <h4><span class="navy">Peter</span> Johnson</h4>
+                        <p>Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.</p>
+                        <ul class="list-inline social-icon">
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg m-b-lg">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>Even more great feautres</h1>
+                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+                </div>
+            </div>
+            <div class="row features-block">
+                <div class="col-lg-3 features-text wow fadeInLeft">
+                    <small>INSPINIA</small>
+                    <h2>Perfectly designed </h2>
+                    <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
+                    <a href="" class="btn btn-primary">Learn more</a>
+                </div>
+                <div class="col-lg-6 text-right m-t-n-lg wow zoomIn">
+                    <img src="~/img/home/bg-circles.jpg" class="img-responsive" alt="dashboard">
+                </div>
+                <div class="col-lg-3 features-text text-right wow fadeInRight">
+                    <small>INSPINIA</small>
+                    <h2>Perfectly designed </h2>
+                    <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with latest jQuery plugins.</p>
+                    <a href="" class="btn btn-primary">Learn more</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="timeline gray-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>Our workflow</h1>
+                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+                </div>
+            </div>
+            <div class="row features-block">
+
+                <div class="col-lg-12">
+                    <div id="vertical-timeline" class="vertical-container light-timeline center-orientation">
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-briefcase"></i>
+                            </div>
+
+                            <div class="vertical-timeline-content">
+                                <h2>Meeting</h2>
+                                <p>
+                                    Conference on the sales results for the previous year. Monica please examine sales trends in marketing and products. Below please find the current status of the sale.
+                                </p>
+                                <a href="#" class="btn btn-xs btn-primary"> More info</a>
+                                <span class="vertical-date"> Today <br /> <small>Dec 24</small> </span>
+                            </div>
+                        </div>
+
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-file-text"></i>
+                            </div>
+
+                            <div class="vertical-timeline-content">
+                                <h2>Decision</h2>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>
+                                <a href="#" class="btn btn-xs btn-primary"> More info</a>
+                                <span class="vertical-date"> Tomorrow <br /> <small>Dec 26</small> </span>
+                            </div>
+                        </div>
+
+                        <div class="vertical-timeline-block">
+                            <div class="vertical-timeline-icon navy-bg">
+                                <i class="fa fa-cogs"></i>
+                            </div>
+
+                            <div class="vertical-timeline-content">
+                                <h2>Implementation</h2>
+                                <p>Go to shop and find some products. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's. </p>
+                                <a href="#" class="btn btn-xs btn-primary"> More info</a>
+                                <span class="vertical-date"> Monday <br /> <small>Jan 02</small> </span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section id="testimonials" class="navy-section testimonials" style="margin-top: 0">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center wow zoomIn">
+                    <i class="fa fa-comment big-icon"></i>
+                    <h1>
+                        What our users say
+                    </h1>
+                    <div class="testimonials-text">
+                        <i>"Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."</i>
+                    </div>
+                    <small>
+                        <strong>12.02.2014 - Andy Smith</strong>
+                    </small>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="comments gray-section" style="margin-top: 0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>What our partners say</h1>
+                    <p>Donec sed odio dui. Etiam porta sem malesuada. </p>
+                </div>
+            </div>
+            <div class="row features-block">
+                <div class="col-lg-4">
+                    <div class="bubble">
+                        "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                    </div>
+                    <div class="comments-avatar">
+                        <a href="" class="pull-left">
+                            <img alt="image" src="~/img/favicon.png">
+                        </a>
+                        <div class="media-body">
+                            <div class="commens-name">
+                                Andrew Williams
+                            </div>
+                            <small class="text-muted">Company X from California</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="bubble">
+                        "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                    </div>
+                    <div class="comments-avatar">
+                        <a href="" class="pull-left">
+                            <img alt="image" src="~/img/favicon.png">
+                        </a>
+                        <div class="media-body">
+                            <div class="commens-name">
+                                Andrew Williams
+                            </div>
+                            <small class="text-muted">Company X from California</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="bubble">
+                        "Uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+                    </div>
+                    <div class="comments-avatar">
+                        <a href="" class="pull-left">
+                            <img alt="image" src="~/img/favicon.png">
+                        </a>
+                        <div class="media-body">
+                            <div class="commens-name">
+                                Andrew Williams
+                            </div>
+                            <small class="text-muted">Company X from California</small>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>More and more extra great feautres</h1>
+                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 features-text">
+                    <small>INSPINIA</small>
+                    <h2>Perfectly designed </h2>
+                    <i class="fa fa-bar-chart big-icon pull-right"></i>
+                    <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
+                </div>
+                <div class="col-lg-5 features-text">
+                    <small>INSPINIA</small>
+                    <h2>Perfectly designed </h2>
+                    <i class="fa fa-bolt big-icon pull-right"></i>
+                    <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 features-text">
+                    <small>INSPINIA</small>
+                    <h2>Perfectly designed </h2>
+                    <i class="fa fa-clock-o big-icon pull-right"></i>
+                    <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
+                </div>
+                <div class="col-lg-5 features-text">
+                    <small>INSPINIA</small>
+                    <h2>Perfectly designed </h2>
+                    <i class="fa fa-users big-icon pull-right"></i>
+                    <p>INSPINIA Admin Theme is a premium admin dashboard template with flat design concept. It is fully responsive admin dashboard template built with Bootstrap 3+ Framework, HTML5 and CSS3, Media query. It has a huge collection of reusable UI components and integrated with.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="row m-b-lg">
+                <div class="col-lg-12 text-center">
+                    <div class="navy-line"></div>
+                    <h1>App Pricing</h1>
+                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 wow zoomIn">
+                    <ul class="pricing-plan list-unstyled">
+                        <li class="pricing-title">
+                            Basic
+                        </li>
+                        <li class="pricing-desc">
+                            Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+                        </li>
+                        <li class="pricing-price">
+                            <span>$16</span> / month
+                        </li>
+                        <li>
+                            Dashboards
+                        </li>
+                        <li>
+                            Projects view
+                        </li>
+                        <li>
+                            Contacts
+                        </li>
+                        <li>
+                            Calendar
+                        </li>
+                        <li>
+                            AngularJs
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-xs" href="#">Signup</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 wow zoomIn">
+                    <ul class="pricing-plan list-unstyled selected">
+                        <li class="pricing-title">
+                            Standard
+                        </li>
+                        <li class="pricing-desc">
+                            Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+                        </li>
+                        <li class="pricing-price">
+                            <span>$22</span> / month
+                        </li>
+                        <li>
+                            Dashboards
+                        </li>
+                        <li>
+                            Projects view
+                        </li>
+                        <li>
+                            Contacts
+                        </li>
+                        <li>
+                            Calendar
+                        </li>
+                        <li>
+                            AngularJs
+                        </li>
+                        <li>
+                            <strong>Support platform</strong>
+                        </li>
+                        <li class="plan-action">
+                            <a class="btn btn-primary btn-xs" href="#">Signup</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 wow zoomIn">
+                    <ul class="pricing-plan list-unstyled">
+                        <li class="pricing-title">
+                            Premium
+                        </li>
+                        <li class="pricing-desc">
+                            Lorem ipsum dolor sit amet, illum fastidii dissentias quo ne. Sea ne sint animal iisque, nam an soluta sensibus.
+                        </li>
+                        <li class="pricing-price">
+                            <span>$160</span> / month
+                        </li>
+                        <li>
+                            Dashboards
+                        </li>
+                        <li>
+                            Projects view
+                        </li>
+                        <li>
+                            Contacts
+                        </li>
+                        <li>
+                            Calendar
+                        </li>
+                        <li>
+                            AngularJs
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-xs" href="#">Signup</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row m-t-lg">
+                <div class="col-lg-8 col-lg-offset-2 text-center m-t-lg">
+                    <p>*Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. <span class="navy">Various versions</span>  have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+                </div>
+            </div>
+        </div>
+
+    </section>*@
+
+</div>

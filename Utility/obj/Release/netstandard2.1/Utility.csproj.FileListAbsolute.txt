@@ -1,0 +1,8 @@
+F:\Projects\Azure Repo\AllInOne\Utility\bin\Release\netstandard2.1\Utility.deps.json
+F:\Projects\Azure Repo\AllInOne\Utility\bin\Release\netstandard2.1\Utility.dll
+F:\Projects\Azure Repo\AllInOne\Utility\bin\Release\netstandard2.1\Utility.pdb
+F:\Projects\Azure Repo\AllInOne\Utility\obj\Release\netstandard2.1\Utility.csprojAssemblyReference.cache
+F:\Projects\Azure Repo\AllInOne\Utility\obj\Release\netstandard2.1\Utility.AssemblyInfoInputs.cache
+F:\Projects\Azure Repo\AllInOne\Utility\obj\Release\netstandard2.1\Utility.AssemblyInfo.cs
+F:\Projects\Azure Repo\AllInOne\Utility\obj\Release\netstandard2.1\Utility.dll
+F:\Projects\Azure Repo\AllInOne\Utility\obj\Release\netstandard2.1\Utility.pdb

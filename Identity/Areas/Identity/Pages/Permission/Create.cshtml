@@ -1,0 +1,145 @@
+﻿@page
+@model Identity.Areas.Identity.Pages.Permission.CreateModel
+@{
+    ViewData["Title"] = "ایجاد دسترسی جدید";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>ایجاد دسترسی جدید</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت گروه دسترسی کاربر</a>
+            </li>
+            <li class="active">
+                <strong>ایجاد دسترسی جدید</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-area="Identity" asp-page="/Permission/List" asp-route-softwareId="@Model.PermissionModel.SoftwareId" 
+               class="btn btn-info float-l">بازگشت به لیست</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>ایجاد دسترسی جدید در شاخه ی<span class="bg-info p-t-5 p-b-5 p-l-3 p-r-3"> @(Model.ParentPermission.FaName)</span></h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" asp-antiforgery="true">
+                        <input type="hidden" asp-for="PermissionModel.ParentId" />
+                        <input type="hidden" asp-for="PermissionModel.SoftwareId" />
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.PermissionModel.FaName">نام فارسی :</label>
+                                    <input class="form-control" asp-for="@Model.PermissionModel.FaName" placeholder="نام فارسی" />
+                                    <span class="text-danger" asp-validation-for="@Model.PermissionModel.FaName"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.PermissionModel.EnName">نام انگلیسی :</label>
+                                    <input class="form-control" asp-for="@Model.PermissionModel.EnName" placeholder="نام انگلیسی" />
+                                    <span class="text-danger" asp-validation-for="@Model.PermissionModel.EnName"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.PermissionModel.Action">عملکرد :</label>
+                                    <input class="form-control" asp-for="@Model.PermissionModel.Action" placeholder="عملکرد" />
+                                    <span class="text-danger" asp-validation-for="@Model.PermissionModel.Action"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.PermissionModel.Public">دسترسی عمومی</label>
+                                    <input type="checkbox" class="checkbox inline" asp-for="@Model.PermissionModel.Public" />
+                                    <span class="text-danger" asp-validation-for="@Model.PermissionModel.Public"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.PermissionModel.Type">نوع عملکرد :</label>
+                                    <select asp-for="PermissionModel.Type" class="form-control dropdown">
+                                        <option value="0">Menu</option>
+                                        <option value="1">Event</option>
+                                        <option value="2">CommonMethod</option>
+                                        <option value="3">ActionResult</option>
+                                        <option value="4">Component</option>
+                                        <option value="5">UserControl</option>
+                                        <option value="6">Control</option>
+                                        <option value="7">Link</option>
+                                        <option value="8">Service</option>
+                                        <option value="9">Page</option>
+                                        <option value="10">PartialView</option>
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="@Model.PermissionModel.Type"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.PermissionModel.SortOrder">ترتیب نمایش :</label>
+                                    <input class="form-control" asp-for="@Model.PermissionModel.SortOrder" placeholder="ترتیب نمایش" />
+                                    <span class="text-danger" asp-validation-for="@Model.PermissionModel.SortOrder"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="@Model.PermissionModel.Description">توضیحات :</label>
+                                    <textarea rows="4" class="form-control" asp-for="@Model.PermissionModel.Description"
+                                              placeholder="توضیحات"></textarea>
+                                    <span class="text-danger" asp-validation-for="@Model.PermissionModel.Description"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <button class="btn btn-primary" data-style="zoom-in" type="submit">ذخیره</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script type="text/javascript">
+
+    </script>
+}

@@ -1,0 +1,168 @@
+﻿@page
+@model Finance.Areas.Finance.Pages.Account.CreateModel
+@{
+    ViewData["Title"] = "ایجاد حساب جدید";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+    <link href="~/panel/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet" />
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>ایجاد حساب</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت مالی</a>
+            </li>
+            <li class="active">
+                <strong>ایجاد حساب</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-page="List" class="btn btn-info float-l">بازگشت به لیست</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>ایجاد حساب جدید در هومت</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" asp-antiforgery="true">
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="AccountModel.Name">نام :</label>
+                                    <input class="form-control" asp-for="AccountModel.Name" placeholder="نام" />
+                                    <span class="text-danger" asp-validation-for="AccountModel.Name"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="AccountModel.Type">نوع حساب :</label>
+                                    <select asp-for="AccountModel.Type" class="form-control dropdown">
+                                        <option value="0">روز شمار</option>
+                                        <option value="1">جاری</option>
+                                        <option value="2">وام</option>
+                                        <option value="3">قرض الحسنه</option>
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="AccountModel.Type"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="AccountModel.BankId">بانک :</label>
+                                    <select asp-for="AccountModel.BankId" class="dropdown form-control"
+                                            asp-items="@(new SelectList(Model.Banks,
+                                                           "Id", "FaName",
+                                                           Model.AccountModel.BankId.ToString()))">
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="AccountModel.BankId"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="AccountModel.Number">شماره حساب :</label>
+                                    <input class="form-control" asp-for="AccountModel.Number" placeholder="شماره حساب" />
+                                    <span class="text-danger" asp-validation-for="AccountModel.Number"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="AccountModel.CardNumber">شماره کارت :</label>
+                                    <input class="form-control" asp-for="AccountModel.CardNumber"
+                                           data-mask="9999-9999-9999-9999" placeholder="شماره کارت" />
+                                    <span class="text-danger" asp-validation-for="AccountModel.CardNumber"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="AccountModel.Price">موجودی(تومان) :</label>
+                                    <input type="text" class="form-control" asp-for="AccountModel.Price" placeholder="موجودی" />
+                                    <span class="text-danger" asp-validation-for="AccountModel.Price"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="AccountModel.IsActive">فعال</label>
+                                    <input type="checkbox" class="checkbox inline" asp-for="AccountModel.IsActive" />
+                                    <span class="text-danger" asp-validation-for="AccountModel.IsActive"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="AccountModel.Description">توضیحات :</label>
+                                    <textarea rows="4" class="form-control" asp-for="AccountModel.Description"
+                                              placeholder="توضیحات"></textarea>
+                                    <span class="text-danger" asp-validation-for="AccountModel.Description"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <button class="btn btn-primary" id="btnSubmit" data-style="zoom-in"
+                                            type="submit">
+                                        ذخیره
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script src="~/panel/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+    <script src="~/js/thousand-seprator.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            thousandSeprator("#AccountModel_Price");
+        });
+
+        $("#AccountModel_Price").keyup(function () {
+            thousandSeprator("#AccountModel_Price");
+        });
+
+        $("#AccountModel_Price").change(function () {
+            thousandSeprator("#AccountModel_Price");
+        });
+
+        $('#btnSubmit').on('click',
+            function () {
+                var number = $("#AccountModel_Price").val().replace(/,/g, '');
+                $("#AccountModel_Price").val(number);
+            });
+    </script>
+}

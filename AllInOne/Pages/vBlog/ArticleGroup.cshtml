@@ -1,0 +1,66 @@
+﻿@page
+@using Utility.Helpers
+@model AllInOne.Pages.vBlog.ArticleGroupModel
+@{
+    ViewData["Title"] = "بلاگ - گروه مقالات";
+    Layout = "_Layout";
+}
+@(await Html.PartialAsync("StructuredData/_OrganizationJsonLD"))
+
+@section Canonical
+{
+    <link rel="canonical" href="https://humate.ir/vBlog/ArticleGroup" />
+}
+@section Description
+{
+    <meta name="description" content="مقالات موضوعات مرتبط با احراز هویت متمرکز کاربران و همچنین تعریف و مدیریت سطوح دسترسی به صورت متمرکز با استفاده از توابع RESTful Api هومت" />
+}
+@section Robots
+{
+    <meta name="robots" content="index,follow" />
+}
+@section Keywords
+{
+    <meta name="Keywords" content="احراز هویت متمرکز، سطوح دسترسی کاربران، تعریف نقش کاربری، تعریف گروه کاربری AllInOne,Humate,SSO,AAA,Single Sign-On,Authentication,Authorization,Accounting" />
+}
+
+<div class="top-padding">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        @{
+            int index = 0;
+            while (Model.ArticleGroupsModel.Count() > index)
+            {
+                <div class="row">
+                    @foreach (var item in Model.ArticleGroupsModel.Skip(index).Take(3))
+                    {
+                        <div class="col-lg-4">
+                            <div class="widget-head-color-box p-lg text-center">
+                                <div class="m-b-md">
+                                    <h2 class="font-bold no-margins">
+                                        @item.Name
+                                    </h2>
+                                    <small>@item.Title</small>
+                                </div>
+                                <img src="@item.ImageUrl" class="m-b-md" alt="@item.Name" width="75%">
+                                <div>
+                                    <span>تعداد زیر گروه مقالات: @item.Childrens.Count</span> |
+                                    <span>تعداد مقاله: @item.Articles.Count</span> |
+                                    <span>تاریخ بروز رسانی: @DateTime.Now.AddDays(-2).GetPersianDateTime()</span>
+                                </div>
+                            </div>
+                            <div class="widget-text-box">
+                                <h4 class="media-heading">@item.MetaDescription</h4>
+                                <p>@Html.Raw(item.Description)</p>
+                                <div class="text-right">
+                                    <a asp-page="Article" asp-route-articleGroupId="@item.Id"
+                                       class="btn btn-primary">مشاهده مقالات</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                index += 3;
+            }
+        }
+    </div>
+</div>

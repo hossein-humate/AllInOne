@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Test For Vue JS</title>
+</head>
+<style>
+    .demo {
+        width: 100px;
+        height: 100px;
+        background-color: gray;
+        display: inline-block;
+        margin: 10px;
+    }
+
+    .red {
+        background-color: red;
+    }
+
+    .green {
+        background-color: green;
+    }
+
+    .blue {
+        background-color: blue;
+    }
+    .yellow {
+        background-color: yellow;
+    }
+</style>
+
+<body>
+    <div id="app" style="width: 100%;height: 100%;" @mousemove="updateCoordinates">
+        <div>
+            <input type="text" @input="changeLink('This Link Name Is:',$event)">
+            <a :href="link" target="blank" @click.prevent="">{{ link }}</a>
+            <p>
+                Coordiantes: {{x}} / {{y}} -
+                <span @mousemove.stop.prevent="">Dead Spot Side</span>
+            </p>
+            <input type="text" @keydown.13="alert('d')">
+            <input type="text" v-model="userInput">
+            <span>{{ userInput }}</span>
+        </div>
+        <hr>
+        <div @mousemove.prevent.stop="">
+            <button @click="counter++">Increase</button>
+            <button @click="counter--">Decrease</button>
+            <button @click="secondCounter++">Increase Second</button>
+            <br>
+            <p>
+                <span>The Values: {{counter}} | {{secondCounter}}</span>
+                <span>Conditional Result: {{ result() }} | {{output}}</span>
+            </p>
+        </div>
+        <p>
+            <div class="demo" @click="attachedRed = !attachedRed" :class="{red:attachedRed}"></div>
+            <div class="demo" @click="attachedGreen = !attachedGreen" :class="{green:attachedGreen}"></div>
+            <div class="demo" @click="attachedBlue = !attachedBlue" :class="{blue:attachedBlue}"></div>
+            <div class="demo" :class="addClasses"></div>
+            <div class="demo" :class="[color,{green:attachedGreen}]"></div>
+            <input type="text" v-model="color">
+        </p>
+        <div>
+            <p v-if="show">You Can See Me!</p>
+            <p v-else>You Can't See Me!</p>
+            <div v-show="show">
+                <p>THis a Text from template Element</p>
+            </div>
+            <button @click="show = !show">Change Show</button>
+        </div>
+    </div>
+
+    <script src="/js/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                show:true,
+                counter: 0,
+                secondCounter: 0,
+                x: 0, y: 0,
+                link: 'https://humate.ir',
+                userInput: "any thing you need",
+                attachedRed: false,
+                attachedGreen: false,
+                attachedBlue: false,
+                color:'yellow'
+            },
+            computed: {
+                output: function () {
+                    console.log("Computed output function Executed.");
+                    return this.counter > 5 ? "Bigger Than 5" : "Smaller Than 5";
+                },
+                addClasses: function () {
+                    return {
+                        red: this.attachedRed,
+                        green: this.attachedGreen,
+                        blue: this.attachedBlue
+                    };
+                }
+            },
+            watch: {
+                counter: function (value) {
+                    console.log("Watch Counter Trigger Executed.");
+                    var vm = this;
+                    setTimeout(function () {
+                        vm.counter = 0;
+                    }, 2000);
+                },
+                attachedRed: function () {
+                    this.attachedBlue = !this.attachedBlue;
+                }
+            },
+            methods: {
+                result: function (event) {
+                    console.log("Methods result function Executed.");
+                    return this.counter > 5 ? "Bigger Than 5" : "Smaller Than 5";
+                },
+                changeLink: function (title, event) {
+                    this.link = title + event.target.value;
+                },
+                updateCoordinates: function (event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

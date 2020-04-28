@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>سرمایه گذاری شخصی</title>
+    <link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body dir="rtl" class="text-right">
+    <div class="container" dir="rtl">
+        <div id="app">
+            <div class="row">
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label for="ArticleModel.Name">مبلغ سپرده :</label>
+                        <input class="form-control" placeholder="مبلغ سپرده" />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label asp-for="ArticleModel.Title">عنوان :</label>
+                        <input class="form-control" asp-for="ArticleModel.Title" placeholder="عنوان" />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label asp-for="ArticleModel.ArticleGroupId">انتخاب گروه :</label>
+                        <select class="dropdown form-control">
+                            <option value="@Guid.Empty">انتخاب کنید</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <h2>فرمول محاسبه سود بانکی به چه صورت است؟</h2>
+            <p>
+                برخی از این وجوه در قالب سپرده‌های قرض‌الحسنه و صرفا به منظور حفظ اصل پول به بانک سپرده می‌شوند و برخی
+                به
+                منظور افزایش ثروت از طریق مشارکت در قراردادهای مضاربه بانکی، سپرده‌گذاری شده و بانک و سپرده‌گذار در
+                میزان
+                سود عایدی شریک خواهند بود. درصد مشارکت مالی سپرده‌گذار و نیز مدت این سپرده‌گذاری، در تعیین سود حاصله اثر
+                مستقیم دارد. افراد می‌توانند وجوه نقد خود را جهت بهره‌مندی از قراردادهای مضاربه‌ای در دو قالب کوتاه‌مدت
+                (روزشمار) و بلندمدت در بانک به امانت بسپارند. ازآنجاکه نرخ‌های مصوب بانک مرکزی جهت سود ارائه‌شده از سوی
+                بانک‌ها به صورت درصد در نظر گرفته می‌شود و نه عدد مشخصی؛ نحوه محاسبه سود سپرده‌ها کمی متفاوت از آن چیزی
+                است
+                که شخص تصور می‌کند.
+            </p>
+            <h2>فرمول محاسبه سود بانکی برای سپرده‌های روزشمار</h2>
+            <p>
+                سود بانکی برای سپرده‌های کوتاه‌مدت (روزشمار) بر اساس مبلغ سپرده در طول ۱ ماه محاسبه می‌شود؛ بنابراین
+                عوامل
+                تأثیرگذار بر مبلغ نهایی سود سپرده کوتاه‌مدت؛ مبلغ سپرده،‌ تعداد روزهای ۱ ماه و نرخ مصوب سود سپرده خواهد
+                بود؛
+                با این توضیحات فرمول محاسبه سود بانکی در سپرده‌هایی از نوع کوتاه‌مدت (روزشمار) به قرار زیر است:
+                <br>
+                سود سپرده کوتاه مدت = 365 روز سال / مبلغ سپرده * نرخ سود * مدت به روز در یک ماه
+                <br>
+                به عنوان مثال برای یک میلیون تومان در یک ماه 30 روزه سود حاصل معادل زیر می باشد.
+                <br>
+                12.328 = 356 / 1.000.000 * 15% * 30
+            </p>
+        </div>
+    </div>
+
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/js/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                ingredients: ['meat', 'fruit', 'milk'],
+                persons: [
+                    { name: 'Hossein', family: 'S Bagheri', gender: true },
+                    { name: 'Mitra', family: 'Masaeli', gender: false }
+                ]
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+﻿@page
+@model Identity.Areas.Identity.Pages.Role.CreateModel
+@{
+    ViewData["Title"] = "ایجاد گروه جدید";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>ایجاد گروه جدید</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت گروه دسترسی کاربر</a>
+            </li>
+            <li class="active">
+                <strong>ایجاد گروه جدید</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-area="Identity" asp-page="/Role/List" asp-route-softwareId="@Model.RoleModel.SoftwareId"
+               class="btn btn-info float-l">بازگشت به لیست</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>ایجاد گروه جدید در هومت</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" asp-antiforgery="true">
+                        <input type="hidden" asp-for="RoleModel.SoftwareId"/>
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="@Model.RoleModel.Name">نام :</label>
+                                    <input class="form-control" asp-for="@Model.RoleModel.Name" placeholder="نام" />
+                                    <span class="text-danger" asp-validation-for="@Model.RoleModel.Name"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="@Model.RoleModel.IsActive">فعال</label>
+                                    <input type="checkbox" class="checkbox inline" asp-for="@Model.RoleModel.IsActive" />
+                                    <span class="text-danger" asp-validation-for="@Model.RoleModel.IsActive"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="@Model.RoleModel.IsDefault">انتخاب پیشفرض کاربران جدید</label>
+                                    <input type="checkbox" class="checkbox inline" asp-for="@Model.RoleModel.IsDefault" title="با انتخاب این گزینه گروه فعلی به کاربرانی که تازه در سیستم شما ثبت نام می کنند تخصیص داده خواهد شد."/>
+                                    <span class="text-danger" asp-validation-for="@Model.RoleModel.IsDefault"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="@Model.RoleModel.Description">توضیحات :</label>
+                                    <textarea rows="4" class="form-control" asp-for="@Model.RoleModel.Description"
+                                              placeholder="توضیحات"></textarea>
+                                    <span class="text-danger" asp-validation-for="@Model.RoleModel.Description"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <button class="btn btn-primary" data-style="zoom-in" type="submit">ذخیره</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script type="text/javascript">
+
+    </script>
+}

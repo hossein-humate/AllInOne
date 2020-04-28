@@ -1,0 +1,160 @@
+﻿@page
+@using Microsoft.AspNetCore.Http
+@using Utility.Helpers
+@model AllInOne.Pages.Docs.ExploreModel
+@{
+    ViewData["Title"] = "مستندات";
+}
+@(await Html.PartialAsync("StructuredData/_OrganizationJsonLD"))
+@section Canonical
+{
+    <link rel="canonical" href="@("https://humate.ir/docs/explore?documentId="+Model.DocumentModel.Id)" />
+}
+@section Description
+{
+    <meta name="description" content="@Html.Raw(Model.DocumentModel.MetaDescription)" />
+}
+@section Robots
+{
+    <meta name="robots" content="@Model.DocumentModel.MetaRobots" />
+}
+@section Keywords
+{
+    <meta name="Keywords" content="@Html.Raw(Model.DocumentModel.MetaKeywords)" />
+}
+@section Styles{
+    <link href="~/panel/css/plugins/jsTree/default/style.min.css" rel="stylesheet" />
+    <link href="~/panel/css/plugins/jsTree/default-dark/style.min.css" rel="stylesheet" />
+}
+
+<div class="top-padding">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>لیست مستندات</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row">
+                    <div class="col-xs-5 col-sm-5 col-md-4 col-lg-3">
+                        <form method="post" asp-antiforgery="true" class="row">
+                            <div class="w-100">
+                                <input type="text" class="form-control" placeholder="جستجو" />
+                            </div>
+                        </form><hr />
+                        <div class="fh-column">
+                            <div class="full-height-scroll">
+                                <div id="documentTree"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-7 col-sm-7 col-md-8 col-lg-9">
+                        <div id="vertical-timeline" class="vertical-container dark-timeline">
+                            <div class="vertical-timeline-block">
+                                <div class="vertical-timeline-icon navy-bg">
+                                    <i class="fa fa-newspaper-o"></i>
+                                </div>
+                                <div class="vertical-timeline-content">
+                                    <div class="mail-box-header">
+                                        <h2>
+                                            @Html.Raw(Model.DocumentModel.Name)
+                                        </h2>
+                                        <div class="m-t-md">
+                                            <h3>
+                                                <span class="font-normal">موضوع: </span>@Html.Raw(Model.DocumentModel.Title)
+                                            </h3>
+                                            <h5>
+                                                <span class="pull-right font-normal">@Model.DocumentModel.CreationDate.GetPersianDateTime()</span>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                    <div class="mail-box">
+                                        <div class="mail-body">
+                                            <p>
+                                                خلاصه:
+                                                <br />
+                                                <br />
+                                                @Html.Raw(Model.DocumentModel.Summary)
+                                            </p>
+                                            <hr />
+                                            <p>
+                                                @Html.Raw(Model.DocumentModel.Description)
+                                            </p>
+                                        </div>
+                                        <div class="mail-attachment">
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <p>
+                                                    <span><i class="fa fa-paperclip"></i> اسناد مرتبط: </span>
+                                                    @if (Model.DocumentModel.Parent != null)
+                                                    {
+                                                    <a asp-page="Explore" asp-route-documentId="@Model.DocumentModel.Parent.Id">
+                                                        @Html.Raw(Model.DocumentModel.Parent.Name)
+                                                    </a>
+                                                    }
+                                                    @foreach (var child in Model.DocumentModel.Childrens)
+                                                    {
+                                                    <a asp-page="Explore" asp-route-documentId="@child.Id">
+                                                        @Html.Raw(child.Name)
+                                                    </a>
+                                                    }
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <p>
+                                                    <span><i class="fa fa-pencil"></i> نویسنده: </span>@Html.Raw(Model.DocumentModel.Author)
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/panel/js/plugins/jsTree/jstree.min.js"></script>
+    <script src="~/js/vue.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#documentTree').jstree({
+                'core': {
+                    "themes": {
+                        "theme": "default",
+                        "dots": false,
+                        "icons": false
+                    },
+                    'data': {
+                        'url': "/api/Document/GetAllDocumentListForTreeView",
+                        'type': 'GET',
+                        'beforeSend': function(request) {
+                            request.setRequestHeader('Security-Token', '@(HttpContext.Session.GetString("Token"))');
+                        }
+                    }
+                },
+                "plugins": ["themes","json_data", "dnd"]
+            });
+
+            @*$('#SoftwareId').on('change',
+                function () {
+                    $.ajax({
+                        url: "/api/Permission/GetAllPermissionListForTreeViewBySoftwareId",
+                        type: 'GET',
+                        beforeSend: function(request) {
+                            request.setRequestHeader('Security-Token', '@(HttpContext.Session.GetString("Token"))');
+                            request.setRequestHeader('SoftwareId', $('#SoftwareId').val());
+                        },
+                        success: function (items) {
+                            $('#permissionTree').jstree(true).settings.core.data = items;
+                            $('#permissionTree').jstree(true).refresh(false,true);
+                        }
+                    });
+                });*@
+        });
+    </script>
+}

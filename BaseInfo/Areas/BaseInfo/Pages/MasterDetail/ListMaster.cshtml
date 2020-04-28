@@ -1,0 +1,152 @@
+﻿@page
+@using Microsoft.AspNetCore.Http
+@model BaseInfo.Areas.BaseInfo.Pages.MasterDetail.ListMasterModel
+@{
+    ViewData["Title"] = "لیست پدر ها";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+    <link href="~/panel/css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+    <link href="~/panel/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+}
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>لیست پدر ها</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت اطلاعات پایه</a>
+            </li>
+            <li class="active">
+                <strong>لیست پدر ها</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-area="BaseInfo" asp-page="/MasterDetail/CreateMaster"
+               class="btn btn-info float-l">ایجاد پدر جدید</a>
+            <a asp-area="Identity" asp-page="/User/Profile" class="btn btn-info float-l">بازگشت به پروفایل</a>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>لیست پدر های موجود در املاک برگ</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table id="dataTable" class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>نام فارسی</th>
+                                <th>عنوان پارامتر</th>
+                                <th>توضیحات</th>
+                                <th>امکانات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.MasterModel)
+                            {
+                                <tr>
+                                    <td>@item.FaName</td>
+                                    <td>@item.Title</td>
+                                    <td>@item.Description</td>
+                                    <td>
+                                        <a asp-area="BaseInfo" asp-page="/MasterDetail/ListDetail"
+                                           asp-route-id="@item.Id" class="btn btn-success btn-xs">مدیریت فرزندان</a>
+                                        <a asp-area="BaseInfo" asp-page="/MasterDetail/EditMaster"
+                                           asp-route-id="@item.Id" class="btn btn-success btn-xs">ویرایش</a>
+                                        <button class="delete-modal btn btn-danger btn-xs" id="@item.Id">حذف</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>نام فارسی</th>
+                                <th>عنوان پارامتر</th>
+                                <th>توضیحات</th>
+                                <th>امکانات</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script src="~/panel/js/plugins/dataTables/datatables.min.js"></script>
+    <script src="~/panel/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                pageLength: 10,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv', title: 'اطلاعات پدر' },
+                    { extend: 'excel', title: 'اطلاعات پدر' },
+                    {extend: 'print', customize: function(win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+                            $(win.document.body).find('table').addClass('compact').css('font-size', 'inherit');
+                        }
+                    }]
+            });
+
+            $('.delete-modal').click(function(e) {
+                swal({
+                        title: "آیا از حذف این رکورد اطمینان دارید؟",
+                        text: "شما با حذف این رکورد دیگر قادر به مشاهده آن نیستید",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "بله حذف میکنم!",
+                        cancelButtonText: "خیر منصرف شدم!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    },
+                    function(isConfirm) {
+                        if (isConfirm) {
+                            fetch("/api/MasterDetail/DeleteById",
+                                {
+                                    method: 'POST',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                        'Security-Token': '@(HttpContext.Session.GetString("Token"))'
+                                    },
+                                    body: JSON.stringify(e.target.id)
+                                });
+                            swal("خذف شد!", "عملیات حذف با موفقیت انجام شد.", "success");
+                            setTimeout(() => { location.reload() }, 2000);
+                        }
+                        else{
+                            swal("لغو عملیات!", "اطلاعات حذف نشد.", "error");
+                        }
+            });
+        });
+    });
+    </script>
+}

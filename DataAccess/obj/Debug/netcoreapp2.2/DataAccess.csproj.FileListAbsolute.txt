@@ -1,0 +1,12 @@
+F:\Projects\Azure Repo\AllInOne\DataAccess\bin\Debug\netcoreapp2.2\DataAccess.deps.json
+F:\Projects\Azure Repo\AllInOne\DataAccess\bin\Debug\netcoreapp2.2\DataAccess.dll
+F:\Projects\Azure Repo\AllInOne\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.csprojAssemblyReference.cache
+F:\Projects\Azure Repo\AllInOne\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.csproj.CoreCompileInputs.cache
+F:\Projects\Azure Repo\AllInOne\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.AssemblyInfoInputs.cache
+F:\Projects\Azure Repo\AllInOne\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.AssemblyInfo.cs
+F:\Projects\Azure Repo\AllInOne\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.csproj.CopyComplete
+F:\Projects\Azure Repo\AllInOne\DataAccess\bin\Debug\netcoreapp2.2\DataAccess.pdb
+F:\Projects\Azure Repo\AllInOne\DataAccess\bin\Debug\netcoreapp2.2\Model.dll
+F:\Projects\Azure Repo\AllInOne\DataAccess\bin\Debug\netcoreapp2.2\Model.pdb
+F:\Projects\Azure Repo\AllInOne\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.dll
+F:\Projects\Azure Repo\AllInOne\DataAccess\obj\Debug\netcoreapp2.2\DataAccess.pdb

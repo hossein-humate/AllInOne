@@ -1,0 +1,253 @@
+﻿@page
+@using Microsoft.AspNetCore.Http
+@model Identity.Areas.Identity.Pages.Permission.ListModel
+@{
+    ViewData["Title"] = "لیست دسترسی ها";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+    <link href="~/panel/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/panel/css/plugins/jsTree/default/style.min.css" rel="stylesheet" />
+    <link href="~/panel/css/plugins/jsTree/default-dark/style.min.css" rel="stylesheet" />
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>لیست دسترسی ها</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت گروه دسترسی کاربر</a>
+            </li>
+            <li class="active">
+                <strong>لیست دسترسی ها</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-area="Identity" asp-page="/User/Profile" class="btn btn-info float-l">بازگشت به پروفایل</a>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>لیست اطلاعات دسترسی های موجود در هومت</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 col-lg-4">
+                            <form method="post" asp-antiforgery="true" class="row">
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                        <label class="m-t-8" asp-for="SoftwareId">انتخاب نرم افزار :</label>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-8">
+                                    <select asp-for="SoftwareId" class="dropdown form-control"
+                                            asp-items="@(new SelectList(Model.Softwares,
+                                                               "Id", "FaName",
+                                                               Model.SoftwareId.ToString()))">
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="SoftwareId"></span>
+                                </div>
+                            </form><hr/>
+                            <div class="fh-column">
+                                <div class="full-height-scroll">
+                                    <div id="permissionTree"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-8 col-lg-8">
+                            <div id="vertical-timeline" class="vertical-container dark-timeline">
+                                <div class="vertical-timeline-block">
+                                    <div class="vertical-timeline-icon navy-bg">
+                                        <i class="fa fa-plus-circle"></i>
+                                    </div>
+                                    <div class="vertical-timeline-content">
+                                        <h2>ایجاد</h2>
+                                        <p>
+                                            ابتدا شاخه مورد نظر را با استفاده از کلیک چپ انتخاب نماید
+                                        </p>
+                                        <span class="vertical-date">
+                                            و یا مستقیما بر روی شاخه مورد نظر راست کلیک کرده و گزینه ی ایجاد را انتخاب نمایید <br />
+                                            <small>در این شاخه فرزند ایجاد خواهد شد.</small>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="vertical-timeline-block">
+                                    <div class="vertical-timeline-icon blue-bg">
+                                        <i class="fa fa-edit"></i>
+                                    </div>
+                                    <div class="vertical-timeline-content">
+                                        <h2>ویرایش</h2>
+                                        <p>
+                                            ابتدا شاخه مورد نظر را با استفاده از کلیک چپ انتخاب نماید
+                                        </p>
+                                        <span class="vertical-date">
+                                            و یا مستقیما بر روی شاخه مورد نظر راست کلیک کرده و گزینه ی ویرایش را انتخاب نمایید <br />
+                                            <small>اطلاعات این شاخه جهت ویرایش نمایش داده خواهد شد.</small>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="vertical-timeline-block">
+                                    <div class="vertical-timeline-icon lazur-bg">
+                                        <i class="fa fa-trash"></i>
+                                    </div>
+                                    <div class="vertical-timeline-content">
+                                        <h2>حذف</h2>
+                                        <p>
+                                            ابتدا شاخه مورد نظر را با استفاده از کلیک چپ انتخاب نماید
+                                        </p>
+                                        <span class="vertical-date">
+                                            و یا مستقیما بر روی شاخه مورد نظر راست کلیک کرده و گزینه ی حذف را انتخاب نمایید <br />
+                                            <small>در صورتی که این شاخه فرزندی نداشته باشد با تایید پیغام حذف اطلاعات، شاخه انتخابی حذف خواهد شد.</small>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script src="~/panel/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="~/panel/js/plugins/jsTree/jstree.min.js"></script>
+    <script src="~/panel/js/plugins/nestable/jquery.nestable.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#permissionTree').jstree({
+                'core': {
+                    'data': {
+                        'url': "/api/Permission/GetAllPermissionListForTreeViewBySoftwareId",
+                        'type': 'GET',
+                        'beforeSend': function(request) {
+                            request.setRequestHeader('Security-Token', '@(HttpContext.Session.GetString("Token"))');
+                            request.setRequestHeader('SoftwareId', $('#SoftwareId').val());
+                        },
+                        'data': function(node) {
+                            return { "id": node.id };
+                        }
+                    }
+                },
+                "themes": {
+                    "theme": "default-dark",
+                    "dots": true,
+                    "icons": true
+                },
+                "contextmenu": {
+                    "items": function($node) {
+                        return {
+                            "Create": {
+                                "label": "ایجاد",
+                                "separator_after":true,
+                                "title": "دسترسی جدیدی در این شاخه ایجاد خواهد شد",
+                                "icon":"fa fa-plus-circle",
+                                "action": function() {
+                                    window.location.href = "/Identity/Permission/Create?parentId=" +$node.id;
+                                }
+                            },
+                            "Edit": {
+                                "label": "ویرایش",
+                                "title": "دسترسی فعلی به فرم ویرایش منتقل خواهد شد",
+                                "icon": "fa fa-edit",
+                                "action": function() {
+                                    window.location.href = "/Identity/Permission/Edit?id=" +$node.id;
+                                }
+                            },
+                            "Delete": {
+                                "label": "حذف",
+                                "title": "دسترسی فعلی حذف خواهد شد",
+                                "icon": "fa fa-trash",
+                                "action": function() {
+                                    swal({
+                                            title: "آیا از حذف این رکورد اطمینان دارید؟",
+                                            text: "شما با حذف این رکورد دیگر قادر به مشاهده آن نیستید",
+                                            type: "warning",
+                                            showCancelButton: true,
+                                            confirmButtonColor: "#DD6B55",
+                                            confirmButtonText: "بله حذف میکنم!",
+                                            cancelButtonText: "خیر منصرف شدم!",
+                                            closeOnConfirm: false,
+                                            closeOnCancel: false
+                                        },
+                                        function(isConfirm) {
+                                            if (isConfirm) {
+                                                (async () => {
+                                                    var res =await fetch("/api/Permission/DeleteById",
+                                                        {
+                                                            method: 'POST',
+                                                            headers: {
+                                                                'Accept': 'application/json',
+                                                                'Content-Type': 'application/json',
+                                                                'Security-Token': '@(HttpContext.Session.GetString("Token"))'
+                                                            },
+                                                            body: JSON.stringify($node.id)
+                                                        });
+                                                    if (!res.ok) {
+                                                        swal("خطا در عملیات!", await res.text(), "error");
+                                                        return;
+                                                    }
+                                                    swal("خذف شد!", "عملیات حذف با موفقیت انجام شد.", "success");
+                                                    setTimeout(() => { location.reload() }, 2000);
+                                                })();
+                                            } else {
+                                                swal("لغو عملیات!", "اطلاعات حذف نشد.", "error");
+                                            }
+                                        });
+                                }
+                            }
+                        }
+                    }
+                },
+                "plugins": ["types", "themes", "json_data", "dnd", "contextmenu", "ui"],
+                'types': {
+                    'default': {
+                        'icon': 'fa fa-folder'
+                    },
+                    'html': {
+                        'icon': 'fa fa-file-code-o'
+                    },
+                    'svg': {
+                        'icon': 'fa fa-file-picture-o'
+                    },
+                    'css': {
+                        'icon': 'fa fa-file-code-o'
+                    },
+                    'img': {
+                        'icon': 'fa fa-file-image-o'
+                    },
+                    'js': {
+                        'icon': 'fa fa-file-text-o'
+                    }
+                }
+            });
+
+            $('#SoftwareId').on('change',
+                function () {
+                    $.ajax({
+                        url: "/api/Permission/GetAllPermissionListForTreeViewBySoftwareId",
+                        type: 'GET',
+                        beforeSend: function(request) {
+                            request.setRequestHeader('Security-Token', '@(HttpContext.Session.GetString("Token"))');
+                            request.setRequestHeader('SoftwareId', $('#SoftwareId').val());
+                        },
+                        success: function (items) {
+                            $('#permissionTree').jstree(true).settings.core.data = items;
+                            $('#permissionTree').jstree(true).refresh(false,true);
+                        }
+                    });
+                });
+        });
+    </script>
+}

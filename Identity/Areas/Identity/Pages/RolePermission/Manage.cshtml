@@ -1,0 +1,221 @@
+﻿@page
+@using Microsoft.AspNetCore.Http
+@model Identity.Areas.Identity.Pages.RolePermission.ManageModel
+@{
+    ViewData["Title"] = "تخصیص دسترسی به گروه";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+    <link href="~/panel/css/plugins/dataTables/datatables.min.css" rel="stylesheet" />
+    <link href="~/panel/css/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+    <link href="~/panel/css/plugins/jsTree/default/style.min.css" rel="stylesheet" />
+    <link href="~/panel/css/plugins/jsTree/default-dark/style.min.css" rel="stylesheet" />
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>تخصیص دسترسی به گروه</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت گروه و دسترسی</a>
+            </li>
+            <li class="active">
+                <strong>تخصیص دسترسی به گروه</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-area="Identity" asp-page="/User/Profile" class="btn btn-info float-l">بازگشت به پروفایل</a>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>تخصیص دسترسی به گروه در هومت</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4 col-lg-4">
+                            <span class="text-danger" asp-validation-for="CheckedItems"></span>
+                            <div class="fh-column">
+                                <div class="full-height-scroll">
+                                    <div id="permissionTree"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-sm-12 col-md-8 col-lg-8">
+                            <form method="post" asp-antiforgery="true">
+                                <input type="hidden" asp-for="CheckedItems" value="@Model.CheckedItems" />
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="SoftwareId">انتخاب نرم افزار :</label>
+                                            <select asp-for="SoftwareId" class="dropdown form-control"
+                                                    asp-items="@(new SelectList(Model.Softwares,
+                                                                   "Id", "FaName",
+                                                                   Model.SoftwareId.ToString()))">
+                                            </select>
+                                            <span class="text-danger" asp-validation-for="SoftwareId"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <div class="form-group">
+                                            <label asp-for="RoleId">انتخاب گروه :</label>
+                                            <select asp-for="RoleId" class="dropdown form-control"
+                                                    asp-items="@(new SelectList(Model.Roles,
+                                                                   "Id", "Name",
+                                                                   Model.RoleId.ToString()))">
+                                            </select>
+                                            <span class="text-danger" asp-validation-for="RoleId"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-auto">
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" id="btnSubmit" data-style="zoom-in"
+                                                    type="submit">
+                                                ذخیره
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script src="~/panel/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="~/panel/js/plugins/jsTree/jstree.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var checkedItems = [];
+            $('#permissionTree').jstree({
+                'core': {
+                    'check_callback': true,
+                    'data': {
+                        'url': "/api/RolePermission/GetAllRolePermissionListForTreeViewBySoftwareId",
+                        'type': 'GET',
+                        'beforeSend': function(request) {
+                            request.setRequestHeader('Security-Token', '@(HttpContext.Session.GetString("Token"))');
+                            request.setRequestHeader('RoleId', $('#RoleId').val());
+                            request.setRequestHeader('SoftwareId', $('#SoftwareId').val());
+                        },
+                        'data': function(node) {
+                            return { 'id': node.id };
+                        },
+                        'success': function(items) {
+                            $.each(items,
+                                function(index, value) {
+                                    if (value.state.checked) {
+                                        checkedItems.push(value.id);
+                                        $("#CheckedItems").val(checkedItems);
+                                    }
+                                });
+                        }
+                    }
+                },
+                "themes": {
+                    "theme": "default-dark",
+                    "dots": true,
+                    "icons": true
+                },
+                "checkbox": {
+                    "keep_selected_style": false,
+                    "three_state": false, // to avoid that fact that checking a node also check others
+                    "whole_node": true, // to avoid checking the box just clicking the node
+                    "tie_selection": false
+                },
+                "plugins": ["types", "themes", "checkbox", "json_data"],
+                'types': {
+                    'default': {
+                        'icon': 'fa fa-folder'
+                    }
+                }
+            }).on("check_node.jstree",
+                function(e, data) {
+                    checkedItems.push(data.node.id);
+                    $("#CheckedItems").val(checkedItems);
+                }).on("uncheck_node.jstree",
+                function(e, data) {
+                    checkedItems.pop(data.node.id);
+                    $("#CheckedItems").val(checkedItems);
+                });
+
+            $('#SoftwareId').on('change',
+                function () {
+                    checkedItems=[];
+                    $.ajax({
+                        url: "/api/Role/GetBySoftwareId",
+                        type: 'GET',
+                        beforeSend: function(request) {
+                            request.setRequestHeader('Security-Token', '@(HttpContext.Session.GetString("Token"))');
+                            request.setRequestHeader('SoftwareId', $('#SoftwareId').val());
+                        },
+                        success: function (items) {
+                            $('#RoleId').empty();
+                            if (items.length === 0) {
+                                swal("پیفام", "هیچ گروهی برای این نرم افزار تعریف نشده است.", "warning");
+                                $('#RoleId').trigger('change');
+                                return;
+                            }
+                            $.each(items,
+                                function (index, value) {
+                                    if (index === 0) {
+                                        $('#RoleId').append($('<option>').text(value.name)
+                                            .attr('value', value.id).attr('selected', 'selected'));
+                                    } else {
+                                        $('#RoleId').append($('<option>').text(value.name).attr('value', value.id));
+                                    }
+                                });
+                            $('#RoleId').trigger('change');
+                        }
+                    });
+                });
+
+            $('#RoleId').on('change',
+                function () {
+                    checkedItems=[];
+                    $.ajax({
+                        url: "/api/RolePermission/GetAllRolePermissionListForTreeViewBySoftwareId",
+                        type: 'GET',
+                        beforeSend: function(request) {
+                            request.setRequestHeader('Security-Token', '@(HttpContext.Session.GetString("Token"))');
+                            request.setRequestHeader('RoleId', $('#RoleId').val());
+                            request.setRequestHeader('SoftwareId', $('#SoftwareId').val());
+                        },
+                        success: function (items) {
+                            $('#permissionTree').jstree(true).settings.core.data = items;
+                            $('#permissionTree').jstree(true).refresh(false,true);
+                            $.each(items,
+                                function(index,value) {
+                                    if (value.state.checked) {
+                                        checkedItems.push(value.id);
+                                        $("#CheckedItems").val(checkedItems);
+                                    }
+                                });
+                        }
+                    });
+                });
+
+            $('#btnSubmit').on('click',
+                function() {
+                    $("#CheckedItems").val(checkedItems);
+                });
+        });
+    </script>
+}

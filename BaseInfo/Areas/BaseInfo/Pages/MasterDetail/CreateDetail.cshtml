@@ -1,0 +1,106 @@
+﻿@page
+@model BaseInfo.Areas.BaseInfo.Pages.MasterDetail.CreateDetailModel
+@{
+    ViewData["Title"] = "ایجاد فرزند-اطلاعات پایه";
+    Layout = "_LayoutPanel";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>اطلاعات پایه</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">ایجاد فرزند</a>
+            </li>
+            <li class="active">
+                <strong>ایجاد فرزند جدید</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-area="BaseInfo" asp-page="/MasterDetail/ListDetail" asp-route-id="@Model.DetailModel.MasterId"
+               class="btn btn-white float-l">بازگشت به لیست @Model.MasterFaName</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>ایجاد فرزند جدید برای @Model.MasterFaName</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" asp-antiforgery="true">
+                        <input type="hidden" asp-for="DetailModel.MasterId" />
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="DetailModel.FaName">نام فارسی :</label>
+                                    <input class="form-control" asp-for="DetailModel.FaName" placeholder="نام فارسی" />
+                                    <span class="text-danger" asp-validation-for="DetailModel.FaName"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="DetailModel.EnName">نام انگلیسی :</label>
+                                    <input class="form-control" asp-for="DetailModel.EnName" placeholder="نام انگلیسی" />
+                                    <span class="text-danger" asp-validation-for="DetailModel.EnName"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="DetailModel.Title">عنوان پارامتر :</label>
+                                    <input class="form-control" asp-for="DetailModel.Title" placeholder="عنوان پارامتر" />
+                                    <span class="text-danger" asp-validation-for="DetailModel.Title"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="DetailModel.Order">ترتیب نمایش :</label>
+                                    <input class="form-control" asp-for="DetailModel.Order" placeholder="ترتیب نمایش" />
+                                    <span class="text-danger" asp-validation-for="DetailModel.Order"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="form-group">
+                                    <label asp-for="DetailModel.Description">توضیحات :</label>
+                                    <input class="form-control" asp-for="DetailModel.Description" placeholder="توضیحات" />
+                                    <span class="text-danger" asp-validation-for="DetailModel.Description"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="form-group">
+                                    <button class="btn btn-primary" data-style="zoom-in" type="submit">ذخیره</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+}

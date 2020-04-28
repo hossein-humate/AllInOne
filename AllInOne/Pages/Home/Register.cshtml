@@ -1,0 +1,82 @@
+﻿@page
+@model AllInOne.Pages.Home.RegisterModel
+@{
+    ViewData["Title"] = "عضویت در هومت";
+    Layout = "_Layout";
+}
+@(await Html.PartialAsync("StructuredData/_OrganizationJsonLD"))
+
+<div class="gray-bg row">
+    <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 text-center loginscreen animated fadeInDown ">
+        <div>
+            <div>
+                <h1 class="logo-name">HUMATE</h1>
+            </div>
+            <h3>ایجاد حساب کاربری در هومت</h3>
+            <p>با عضویت در هومت از امکانات این سامانه بهرمند خواهید شد.</p>
+            <form class="m-t" method="post" asp-antiforgery="true">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <input class="form-control" asp-for="@Model.UserModel.Username" placeholder="نام کاربری" />
+                    <span class="text-danger" asp-validation-for="@Model.UserModel.Username"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" asp-for="@Model.UserModel.Email" placeholder="پست الکترونیکی" />
+                    <span class="text-danger" asp-validation-for="@Model.UserModel.Email"></span>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" asp-for="@Model.UserModel.Mobile" placeholder="تلفن همراه" />
+                    <span class="text-danger" asp-validation-for="@Model.UserModel.Mobile"></span>
+                </div>
+                <div class="row" id="pwd-container">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <input class="form-control password-power" asp-for="@Model.UserModel.Password" placeholder="گذرواژه" />
+                            <span class="text-danger" asp-validation-for="@Model.UserModel.Password"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="pwstrength_viewport_progress"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" asp-for="@Model.UserModel.RePassword" placeholder="تکرار گذرواژه" />
+                    <span class="text-danger" asp-validation-for="@Model.UserModel.RePassword"></span>
+                </div>
+                <div class="form-group">
+                    <label>قوانین و مقررات را مطالعه کردم و قبول دارم</label>
+                    <input type="checkbox" class="checkbox inline" />
+                </div>
+                <button class="btn btn-primary block full-width m-b" data-style="zoom-in" type="submit">ثبت نام</button>
+                <p class="text-muted text-center"><small>حساب کاربری دارید؟</small></p>
+                <a class="btn btn-sm btn-white btn-block" asp-page="/Home/Login">ورود</a>
+            </form>
+            <p class="m-t">
+                <small>امکان ورود به پنل کاربری پس از عضویت/ورود فراهم می شود</small>
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script src="~/panel/js/plugins/pwstrength/pwstrength-bootstrap.min.js"></script>
+    <script src="~/panel/js/plugins/pwstrength/zxcvbn.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var inputPassword = {};
+            inputPassword.ui = {
+                container: "#pwd-container",
+                showVerdictsInsideProgressBar: true,
+                viewports: {
+                    progress: ".pwstrength_viewport_progress"
+                }
+            };
+            inputPassword.common = {
+                debug: false
+            };
+            $('.password-power').pwstrength(inputPassword);
+        });
+    </script>
+}

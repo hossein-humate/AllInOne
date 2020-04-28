@@ -1,0 +1,110 @@
+﻿@page
+@using Utility.Helpers
+@model AllInOne.Pages.vBlog.ArticleModel
+@{
+    ViewData["Title"] = "بلاگ - مقاله";
+    Layout = "_Layout";
+}
+@(await Html.PartialAsync("StructuredData/_OrganizationJsonLD"))
+
+@section Styles
+{
+    <link href="~/css/slick.min.css" rel="stylesheet" />
+}
+@section Canonical
+{
+    <link rel="canonical" href="@("https://humate.ir/vBlog/Article?articleGroupId="+Model.ArticleGroupId)" />
+}
+@section Description
+{
+    <meta name="description" content="مقالات موضوعات مرتبط با احراز هویت متمرکز کاربران و همچنین تعریف و مدیریت سطوح دسترسی به صورت متمرکز با استفاده از توابع RESTful Api هومت" />
+}
+@section Robots
+{
+    <meta name="robots" content="index,follow" />
+}
+@section Keywords
+{
+    <meta name="Keywords" content="احراز هویت متمرکز، سطوح دسترسی کاربران، تعریف نقش کاربری، تعریف گروه کاربری AllInOne,Humate,SSO,AAA,Single Sign-On,Authentication,Authorization,Accounting" />
+}
+<div class="top-padding">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        @foreach (var item in Model.ArticlesModel)
+        {
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox product-detail">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="product-images">
+                                        <div>
+                                            <div class="image-imitation">
+                                                <img src="@item.ImageUrl" width="100%" />
+                                            </div>
+                                        </div>
+                                        @foreach (var image in item.ArticleImages)
+                                        {
+                                            <div>
+                                                <div class="image-imitation">
+                                                    <img src="@image.ArticleImageUrl" alt="@image.Alt" width="100%"/>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <h2 class="font-bold m-b-xs">
+                                        @item.Name
+                                    </h2>
+                                    <div>
+                                        <a asp-page="ArticleGroup" class="btn btn-primary pull-right">بازگشت به گروه مقالات</a>
+                                        <h1 class="product-main-price">@item.Title <small class="text-muted"> - گروه مقالات @item.ArticleGroup?.Name</small> </h1>
+                                    </div>
+                                    <hr>
+                                    <h4>خلاصه مقاله</h4>
+                                    <div class="small text-muted">
+                                        @item.Summary
+                                    </div>
+                                    <small>@item.MetaKeywords</small>
+                                    <hr>
+                                    <div class="text-right">
+                                        <div class="btn-group">
+                                            <a asp-page="Content" asp-route-articleId="@item.Id" class="btn btn-primary">
+                                                خواندن
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-footer">
+                            <span class="pull-right">
+                                Hossein Seyed Bagheri - <i class="fa fa-clock-o"></i> @item.CreationDate.GetPersianDateTime()
+                            </span>
+                            Full-Stock Programmer
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/js/slick.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.product-images').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                fade: true,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                cssEase: 'linear'
+            });
+        });
+    </script>
+}

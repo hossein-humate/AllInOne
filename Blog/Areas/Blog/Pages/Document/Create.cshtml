@@ -1,0 +1,178 @@
+﻿@page
+@model Blog.Areas.Blog.Pages.Document.CreateModel
+@{
+    ViewData["Title"] = "ایجاد مستند جدید";
+    Layout = "_LayoutPanel";
+}
+
+@section Styles
+{
+    <link href="~/panel/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/bootstrap-chosen.min.css" rel="stylesheet" />
+    <link href="~/css/summernote.min.css" rel="stylesheet" />
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-4">
+        <h2>ایجاد مستند</h2>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">مدیریت مقالات و مستندات</a>
+            </li>
+            <li class="active">
+                <strong>ایجاد مستند</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-sm-8">
+        <div class="title-action">
+            <a asp-page="List" class="btn btn-info float-l">بازگشت به لیست</a>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>ایجاد مستند جدید در هومت</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" asp-antiforgery="true">
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="DocumentModel.Name">نام :</label>
+                                    <input class="form-control" asp-for="DocumentModel.Name" placeholder="نام" />
+                                    <span class="text-danger" asp-validation-for="DocumentModel.Name"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="DocumentModel.Title">عنوان :</label>
+                                    <input class="form-control" asp-for="DocumentModel.Title" placeholder="عنوان" />
+                                    <span class="text-danger" asp-validation-for="DocumentModel.Title"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-4 col-lg-4">
+                                <div class="form-group">
+                                    <label asp-for="DocumentModel.ParentId">انتخاب والد :</label>
+                                    <select asp-for="DocumentModel.ParentId" class="chosen-select"
+                                            asp-items="@(new SelectList(Model.Parents,
+                                                           "Value", "Text",
+                                                           Model.DocumentModel.ParentId.ToString()))">
+                                        <option value="@Guid.Empty">انتخاب کنید</option>
+                                    </select>
+                                    <span class="text-danger" asp-validation-for="DocumentModel.ParentId"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5 col-lg-5">
+                                <div class="form-group">
+                                    <label asp-for="DocumentModel.MetaDescription">توضیحات متا :</label>
+                                    <textarea rows="4" class="form-control" asp-for="DocumentModel.MetaDescription"
+                                              placeholder="توضیحات متا"></textarea>
+                                    <span class="text-danger" asp-validation-for="DocumentModel.MetaDescription"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-5 col-lg-5">
+                                <div class="form-group">
+                                    <label asp-for="DocumentModel.Summary">خلاصه :</label>
+                                    <textarea rows="4" class="form-control" asp-for="DocumentModel.Summary"
+                                              placeholder="خلاصه"></textarea>
+                                    <span class="text-danger" asp-validation-for="DocumentModel.Summary"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-2 col-lg-2">
+                                <div class="form-group">
+                                    <label asp-for="DocumentModel.IsActive">فعال</label>
+                                    <input type="checkbox" class="checkbox inline" asp-for="DocumentModel.IsActive" />
+                                    <span class="text-danger" asp-validation-for="DocumentModel.IsActive"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="DocumentModel.MetaRobots">Meta Robots :</label>
+                                    <input class="form-control" asp-for="DocumentModel.MetaRobots" placeholder="Meta Robots" />
+                                    <span class="text-danger" asp-validation-for="DocumentModel.MetaRobots"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="DocumentModel.MetaKeywords">Meta Keywords :</label>
+                                    <input class="form-control" asp-for="DocumentModel.MetaKeywords" placeholder="Meta Keywords" />
+                                    <span class="text-danger" asp-validation-for="DocumentModel.MetaKeywords"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="DocumentModel.Author">نویسنده :</label>
+                                    <input class="form-control" asp-for="DocumentModel.Author" placeholder="نویسنده" />
+                                    <span class="text-danger" asp-validation-for="DocumentModel.Author"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label asp-for="DocumentModel.SortOrder">ترتیب نمایش :</label>
+                                    <input class="form-control" asp-for="DocumentModel.SortOrder" placeholder="ترتیب نمایش" />
+                                    <span class="text-danger" asp-validation-for="DocumentModel.SortOrder"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label asp-for="DocumentModel.Description">توضیحات :</label>
+                                    <textarea class="form-control summernote" asp-for="DocumentModel.Description"
+                                              placeholder="توضیحات"></textarea>
+                                    <span class="text-danger" asp-validation-for="DocumentModel.Description"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <button class="btn btn-primary" id="btnSubmit" data-style="zoom-in"
+                                        type="submit">
+                                    ذخیره
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    @(await Html.PartialAsync("_ValidationScriptsPartial"))
+    <script src="~/panel/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+    <script src="~/js/chosen.jquery.min.js"></script>
+    <script src="~/js/summernote.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.chosen-select').chosen({ width: "100%" });
+
+            $('.summernote').summernote({
+                height: '300px'
+            });
+        });
+    </script>
+}

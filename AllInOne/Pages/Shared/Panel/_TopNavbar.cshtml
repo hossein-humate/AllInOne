@@ -1,0 +1,67 @@
+﻿<div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#">
+                <i class="fa fa-bars"></i>
+            </a>
+            <span class="navbar-minimalize minimalize-styl-2 m-r-sm text-muted welcome-message" 
+                  style="color: #1ab394; font-size: 18px;" 
+                  data-i18n="topnav.welcometext"> به پنل مدیریتی هومت خوش آمدید.</span>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="logo-bordered">
+                <a href="/" style="padding: 0;min-height: 0" title="خانه">
+                    <img alt="لوگو" src="~/img/favicon.png" width="32" />
+                </a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
+                </a>
+                <ul class="dropdown-menu dropdown-messages">
+                    <li>
+                        <div class="text-center link-block">
+                            <a href="#">
+                                <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <li>
+                        <a href="#">
+                            <div>
+                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                <span class="pull-right text-muted small">4 minutes ago</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <div class="text-center link-block">
+                            <a href="#">
+                                <strong>See All Alerts</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a asp-page="/Home/Login">
+                    <i class="fa fa-sign-out" title="خروج"></i>
+                </a>
+            </li>
+            <li>
+                <a class="right-sidebar-toggle">
+                    <i class="fa fa-tasks" title="پنل دسترسی سریع"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

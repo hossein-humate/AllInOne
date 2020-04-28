@@ -1,0 +1,73 @@
+﻿@using Model.Entity.Identity
+@using Utility
+@model IEnumerable<Permission>
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span>
+                        <img alt="تصویر کاربر" class="img-circle"
+                             src="@(string.IsNullOrWhiteSpace(Context.Session.Get<User>("CurrentUser").Person.PersonPictureUrl)?
+                                      "/img/profile/person-image.png":Context.Session.Get<User>("CurrentUser").Person.PersonPictureUrl)" 
+                             data-src="/img/profile/person-image.png" width="90%" />
+                    </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">@(Context.Session.Get<User>("CurrentUser").Username)</strong>
+                            </span>
+                            <span class="text-muted text-xs block">امکانات<b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="/">صفحه ی اصلی</a></li>
+                        <li><a asp-page="/ContactUs">تماس با ما</a></li>
+                        <li><a asp-page="/About">درباره ی ما</a></li>
+                        <li class="divider"></li>
+                        <li><a asp-page="/Home/Login">خروج</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    <span class="fs-12 font-bold">پنل کاربری هومت</span><hr />
+                    <img alt="تصویر کاربر" class="img-circle"
+                         src="@(string.IsNullOrWhiteSpace(Context.Session.Get<User>("CurrentUser").Person.PersonPictureUrl) ?
+                                  "/img/profile/person-image.png" : Context.Session.Get<User>("CurrentUser").Person.PersonPictureUrl)"
+                         data-src="/img/profile/person-image.png" width="90%" />
+                </div>
+            </li>
+            @{
+                var father = Model.FirstOrDefault(p => p.ParentId == Guid.Empty);
+                foreach (var permission in Model.Where(p => p.ParentId == father?.Id).OrderBy(p => p.SortOrder))
+                {
+                    var childrens = Model.Where(p => p.ParentId == permission.Id).OrderBy(p => p.SortOrder).ToList();
+                    <li>
+                        <a href="@permission.Action">
+                            <i class="@(string.IsNullOrEmpty(permission.Icon)?"fa fa-columns":permission.Icon)"></i>
+                            <span class="nav-label" data-i18n="nav.dashboard">@permission.FaName</span>
+                            @if (childrens.Count > 0)
+                            {
+                                <span class="fa arrow"></span>
+                            }
+                        </a>
+                        @if (childrens.Count > 0)
+                        {
+                            <ul class="nav nav-second-level collapse">
+                                @foreach (var child in childrens)
+                                {
+                                    <li>
+                                        <a href="@child.Action">
+                                            <i class="@(string.IsNullOrEmpty(child.Icon)?"fa fa-columns":child.Icon)"></i>
+                                            @child.FaName
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        }
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</nav>

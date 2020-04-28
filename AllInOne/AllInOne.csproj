@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.2" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\BaseInfo\BaseInfo.csproj" />
+    <ProjectReference Include="..\Blog\Blog.csproj" />
+    <ProjectReference Include="..\Finance\Finance.csproj" />
+    <ProjectReference Include="..\Identity\Identity.csproj" />
+    <ProjectReference Include="..\TaskManager\TaskManager.csproj" />
+    <ProjectReference Include="..\UnitOfWork\UnitOfWork.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Html\**">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Folder Include="Controllers\TaskManager\" />
+    <Folder Include="Pages\Shared\Footer\" />
+    <Folder Include="wwwroot\img\home\" />
+    <Folder Include="wwwroot\img\profile\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\advanced\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\charts\area\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\charts\bar\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\charts\line\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\charts\scatter\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\legend\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\scales\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\scales\linear\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\scales\logarithmic\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\scales\time\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\scriptable\" />
+    <Folder Include="wwwroot\lib\Chart.js\samples\tooltips\" />
+    <Folder Include="wwwroot\panel\css\patterns\" />
+  </ItemGroup>
+</Project>

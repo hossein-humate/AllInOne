@@ -1,0 +1,88 @@
+﻿@page
+@using Utility.Helpers
+@model AllInOne.Pages.vBlog.ContentModel
+@{
+    ViewData["Title"] = "بلاگ - محتوای مقاله";
+    Layout = "_Layout";
+}
+@(await Html.PartialAsync("StructuredData/_OrganizationJsonLD"))
+@(await Html.PartialAsync("Shared/StructuredData/_ArticleJsonLD",Model.ArticleModel))
+
+@section Canonical
+{
+    <link rel="canonical" href="@("https://humate.ir/vBlog/Content?articleId="+Model.ArticleModel.Id)" />
+}
+@section Description
+{
+    <meta name="description" content="@Html.Raw(Model.ArticleModel.MetaDescription)" />
+}
+@section Robots
+{
+    <meta name="robots" content="@Model.ArticleModel.MetaRobots" />
+}
+@section Keywords
+{
+    <meta name="Keywords" content="@Html.Raw(Model.ArticleModel.MetaKeywords)" />
+}
+<div class="top-padding">
+    <div class="wrapper wrapper-content  animated fadeInRight article">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <div class="text-center article-title">
+                            <span class="text-muted"><i class="fa fa-clock-o"></i> @Model.ArticleModel.CreationDate.GetPersianDateTime()</span>
+                            <h1>
+                                @Model.ArticleModel.Name
+                            </h1>
+                            <h4>
+                                @Model.ArticleModel.Title
+                            </h4>
+                        </div>
+                        <div>
+                            <img src="@(string.IsNullOrWhiteSpace(Model.ArticleModel.ImageUrl)?
+                                          "img/Humate-512.png":Model.ArticleModel.ImageUrl)" class="w-100"/>
+                        </div>
+                        <div>
+                            @Html.Raw(Model.ArticleModel.Description)
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="small text-right">
+                                    <h5>گروه مقاله:</h5>
+                                    <div> <i class="fa fa-archive"> </i> در گروه @Model.ArticleModel.ArticleGroup?.Name</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="small text-right">
+                                    <h5>جزئیات:</h5>
+                                    <div> <i class="fa fa-clock-o"> </i> تاریخ: @Model.ArticleModel.CreationDate.GetPersianDateTime() </div>
+                                    <i class="fa fa-eye"> </i> تعداد بازدید: @Model.ArticleModel.VisitNumber
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="small text-right">
+                                    <h5>نویسنده:</h5>
+                                    <div> <i class="fa fa-pencil"> </i> @Model.ArticleModel.Author </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="pull-right">
+                                    <h6>@Model.ArticleModel.MetaDescription</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-lg-offset-5 col-lg-7">
+                                <a asp-page="Article" asp-route-articleGroupId="@Model.ArticleModel.ArticleGroupId"
+                                   class="btn btn-info">بازگشت به لیست مقالات</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

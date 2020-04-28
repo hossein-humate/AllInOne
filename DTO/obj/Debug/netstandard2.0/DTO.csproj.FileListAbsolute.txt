@@ -1,0 +1,13 @@
+F:\Projects\Azure Repo\AllInOne\DTO\bin\Debug\netstandard2.0\DTO.deps.json
+F:\Projects\Azure Repo\AllInOne\DTO\bin\Debug\netstandard2.0\DTO.dll
+F:\Projects\Azure Repo\AllInOne\DTO\bin\Debug\netstandard2.0\DTO.pdb
+F:\Projects\Azure Repo\AllInOne\DTO\bin\Debug\netstandard2.0\Model.dll
+F:\Projects\Azure Repo\AllInOne\DTO\bin\Debug\netstandard2.0\Newtonsoft.Json.dll
+F:\Projects\Azure Repo\AllInOne\DTO\bin\Debug\netstandard2.0\Model.pdb
+F:\Projects\Azure Repo\AllInOne\DTO\bin\Debug\netstandard2.0\Newtonsoft.Json.xml
+F:\Projects\Azure Repo\AllInOne\DTO\obj\Debug\netstandard2.0\DTO.csprojAssemblyReference.cache
+F:\Projects\Azure Repo\AllInOne\DTO\obj\Debug\netstandard2.0\DTO.AssemblyInfoInputs.cache
+F:\Projects\Azure Repo\AllInOne\DTO\obj\Debug\netstandard2.0\DTO.AssemblyInfo.cs
+F:\Projects\Azure Repo\AllInOne\DTO\obj\Debug\netstandard2.0\DTO.csproj.CopyComplete
+F:\Projects\Azure Repo\AllInOne\DTO\obj\Debug\netstandard2.0\DTO.dll
+F:\Projects\Azure Repo\AllInOne\DTO\obj\Debug\netstandard2.0\DTO.pdb

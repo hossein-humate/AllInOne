@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <partial name="Google/_Analytics" />
+    <meta charset="utf-8" />
+    <meta name="author" content="Hossein Seyed Bagheri">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/favicon.png">
+    <title>هومت - @Html.Raw(ViewData["Title"])</title>
+
+    <meta property="og:site_name" content="Humate All In One" />
+    <meta property="article:publisher" content="https://www.humate.ir/blog" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://humate.ir/" />
+    <meta property="og:title" content="All Applications Need SSO and Authentication - Authorization - Accounting" />
+    <meta property="og:description" content="Impelimeting SSO(Single Sign On) in a few minutes with Humate All In One Application, You can create your costum Authentication,Authorization and Accounting with this Api and Manage your Dynamic Role/Permission without any limitation." />
+    <meta property="og:updated_time" content="@DateTime.Now.AddDays(-1)" />
+    <meta property="og:type" content="article" />
+    <meta content="/img/favicon.png" itemprop="image">
+    <meta content="origin" name="referrer">
+
+    @if (IsSectionDefined("Canonical"))
+    {
+        @RenderSection("Canonical", false)
+    }
+    else
+    {
+        <link rel="canonical" href="https://humate.ir/" />
+    }
+
+    @if (IsSectionDefined("Robots"))
+    {
+        @RenderSection("Robots", false)
+    }
+    else
+    {
+        <meta name="robots" content="index,nofollow" />
+    }
+
+    @if (IsSectionDefined("Description"))
+    {
+        @RenderSection("Description", false)
+    }
+    else
+    {
+        <meta name="description" content="Humate All In One SSO (Single Sign-On) and AAA (Authentication - Authorization - Accounting) - https://Humate.ir/" />
+    }
+
+    @if (IsSectionDefined("Keywords"))
+    {
+        @RenderSection("Keywords", false)
+    }
+    else
+    {
+        <meta name="Keywords" content="AllInOne,Humate,SSO,AAA,Single Sign-On,Authentication,Authorization,Accounting" />
+    }
+
+    <link href="~/css/layout.min.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+    @*<partial name="Google/_TagManager" />*@
+</head>
+<body class="landing-page rtls" dir="rtl">
+    <!-- Google Tag Manager (noscript) -->
+    @*<noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TKB8RLL"
+                height="0" width="0" style="display: none; visibility: hidden"></iframe>
+    </noscript>*@
+    <!-- End Google Tag Manager (noscript) -->
+    <partial name="Header/HeaderComponent" />
+    @(await RenderSectionAsync("Breadcrumb", required: false))
+    @RenderBody()
+    <partial name="Footer/FooterComponent" />
+    <script src="~/js/layout.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('body').scrollspy({
+                target: '.navbar-fixed-top',
+                offset: 80
+            });
+
+            // Page scrolling feature
+            $('a.page-scroll').bind('click',
+                function (event) {
+                    var link = $(this);
+                    $('html, body').stop().animate({
+                        scrollTop: $(link.attr('href')).offset().top - 50
+                    },
+                        500);
+                    event.preventDefault();
+                    $('#navbar').collapse('hide');
+                });
+        });
+
+        var cbpAnimatedHeader = (function () {
+            var docElem = document.documentElement,
+                header = document.querySelector('.navbar-default'),
+                didScroll = false,
+                changeHeaderOn = 200;
+
+            function init() {
+                window.addEventListener('scroll',
+                    function () {
+                        if (!didScroll) {
+                            didScroll = true;
+                            setTimeout(scrollPage, 250);
+                        }
+                    },
+                    false);
+            }
+
+            function scrollPage() {
+                var sy = scrollY();
+                if (sy >= changeHeaderOn) {
+                    $(header).addClass('navbar-scroll');
+                } else {
+                    $(header).removeClass('navbar-scroll');
+                }
+                didScroll = false;
+            }
+
+            function scrollY() {
+                return window.pageYOffset || docElem.scrollTop;
+            }
+
+            init();
+        })();
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,108 @@
+[
+  {
+    "outputFileName": "wwwroot/css/layout.min.css",
+    "inputFiles": [
+      "wwwroot/panel/css/bootstrap.min.css",
+      "wwwroot/panel/css/animate.css",
+      "wwwroot/panel/css/style.css",
+      "wwwroot/panel/font-awesome/css/font-awesome.min.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/util.min.css",
+    "inputFiles": [
+      "wwwroot/panel/css/util.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/layout.min.js",
+    "inputFiles": [
+      "wwwroot/panel/js/jquery-3.1.1.min.js",
+      "wwwroot/panel/js/bootstrap.min.js",
+      "wwwroot/panel/js/plugins/slimscroll/jquery.slimscroll.min.js",
+      "wwwroot/panel/js/plugins/wow/wow.min.js",
+      "wwwroot/panel/js/plugins/metisMenu/metisMenu.min.js",
+      "wwwroot/panel/js/plugins/pace/pace.min.js",
+      "wwwroot/panel/js/inspinia.js",
+      "wwwroot/panel/js/thousand-seprator.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/slick.min.css",
+    "inputFiles": [
+      "wwwroot/panel/css/plugins/slick/slick.css",
+      "wwwroot/panel/css/plugins/slick/slick-theme.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/slick.min.js",
+    "inputFiles": [
+      "wwwroot/panel/js/plugins/slick/slick.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/summernote.min.css",
+    "inputFiles": [
+      "wwwroot/panel/css/plugins/summernote/summernote.css",
+      "wwwroot/panel/css/plugins/summernote/summernote-bs3.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/summernote.min.js",
+    "inputFiles": [
+      "wwwroot/panel/js/plugins/summernote/summernote.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/bootstrap-chosen.min.css",
+    "inputFiles": [
+      "wwwroot/panel/css/plugins/chosen/bootstrap-chosen.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/chosen.jquery.min.js",
+    "inputFiles": [
+      "wwwroot/panel/js/plugins/chosen/chosen.jquery.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/chart.min.css",
+    "inputFiles": [
+      "wwwroot/lib/chart.js/chart.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/chart.min.js",
+    "inputFiles": [
+      "wwwroot/lib/chart.js/chart.js"
+    ]
+  }
+]
