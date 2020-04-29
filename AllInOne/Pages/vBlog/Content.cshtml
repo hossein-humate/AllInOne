@@ -33,16 +33,18 @@
                         <div class="text-center article-title">
                             <span class="text-muted"><i class="fa fa-clock-o"></i> @Model.ArticleModel.CreationDate.GetPersianDateTime()</span>
                             <h1>
-                                @Model.ArticleModel.Name
+                                @Html.Raw(Model.ArticleModel.Name)
                             </h1>
                             <h4>
-                                @Model.ArticleModel.Title
+                                @Html.Raw(Model.ArticleModel.Title)
                             </h4>
                         </div>
+                        <hr/>
                         <div>
                             <img src="@(string.IsNullOrWhiteSpace(Model.ArticleModel.ImageUrl)?
                                           "img/Humate-512.png":Model.ArticleModel.ImageUrl)" class="w-100"/>
                         </div>
+                        <hr/>
                         <div>
                             @Html.Raw(Model.ArticleModel.Description)
                         </div>
